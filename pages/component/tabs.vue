@@ -1,0 +1,266 @@
+<template>
+  <view class="tabs-container">
+    <view v-if="isSpecial" class="tabs-header fxg-cube-container">
+      <view v-for="(item, index) in tabs" :key="index"
+				class="tab-title fxg-cube__content"
+				:class="{ active: currentIndex === index }"
+				@click="selectTab(index)">
+				<svg v-if="index === 0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 116 116" class="fxg-cube__icon" tabindex="-1"
+					focusable="false">
+					<g xmlns="http://www.w3.org/2000/svg" class="fxg-cube__icon-grey">
+						<polyline points="21.66 38.56 21.66 22.12 66.28 1.12 110.81 22.12 110.81 64.14 66.28 85.15 52.06 78.16" fill="none"
+							stroke="#333333" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+						<line x1="66.28" y1="43.13" x2="21.66" y2="22.12" fill="none" stroke="#333333" stroke-linecap="round"
+							stroke-linejoin="round" stroke-width="3"></line>
+						<line x1="66.28" y1="43.13" x2="66.28" y2="85.15" fill="none" stroke="#333333" stroke-linecap="round"
+							stroke-linejoin="round" stroke-width="3"></line>
+						<line x1="110.81" y1="22.12" x2="66.28" y2="43.13" fill="none" stroke="#333333" stroke-linecap="round"
+							stroke-linejoin="round" stroke-width="3"></line>
+						<line x1="87.19" y1="11.02" x2="42.71" y2="32.03" fill="none" stroke="#333333" stroke-linecap="round"
+							stroke-linejoin="round" stroke-width="3"></line>
+						<path
+							d="M1.86,43H47.14a.86.86,0,0,1,.86.86v66.28a.86.86,0,0,1-.86.86H1.86a.86.86,0,0,1-.86-.86V43.86A.86.86,0,0,1,1.86,43Z"
+							fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+						<rect x="7.01" y="49.02" width="34.98" height="18" fill="none" stroke="#333333" stroke-linecap="round"
+							stroke-linejoin="round" stroke-width="3"></rect>
+						<line x1="7" y1="77" x2="12" y2="77" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="17" y1="77" x2="22" y2="77" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="27" y1="77" x2="32" y2="77" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="37" y1="77" x2="42" y2="77" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="7" y1="87" x2="12" y2="87" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="17" y1="87" x2="22" y2="87" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="27" y1="87" x2="32" y2="87" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="7" y1="97" x2="12" y2="97" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="17" y1="97" x2="22" y2="97" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="27" y1="97" x2="32" y2="97" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="40" y1="87" x2="40" y2="97" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+					</g>
+					<g xmlns="http://www.w3.org/2000/svg" class="fxg-cube__icon-white">
+						<polyline points="21.66 38.56 21.66 22.12 66.28 1.12 110.81 22.12 110.81 64.14 66.28 85.15 52.06 78.16" fill="none"
+							stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+						<line x1="66.28" y1="43.13" x2="21.66" y2="22.12" fill="none" stroke="#ffffff" stroke-linecap="round"
+							stroke-linejoin="round" stroke-width="3"></line>
+						<line x1="66.28" y1="43.13" x2="66.28" y2="85.15" fill="none" stroke="#ffffff" stroke-linecap="round"
+							stroke-linejoin="round" stroke-width="3"></line>
+						<line x1="110.81" y1="22.12" x2="66.28" y2="43.13" fill="none" stroke="#ffffff" stroke-linecap="round"
+							stroke-linejoin="round" stroke-width="3"></line>
+						<line x1="87.19" y1="11.02" x2="42.71" y2="32.03" fill="none" stroke="#ffffff" stroke-linecap="round"
+							stroke-linejoin="round" stroke-width="3"></line>
+						<path
+							d="M1.86,43H47.14a.86.86,0,0,1,.86.86v66.28a.86.86,0,0,1-.86.86H1.86a.86.86,0,0,1-.86-.86V43.86A.86.86,0,0,1,1.86,43Z"
+							fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+						<rect x="7.01" y="49.02" width="34.98" height="18" fill="none" stroke="#ffffff" stroke-linecap="round"
+							stroke-linejoin="round" stroke-width="3"></rect>
+						<line x1="7" y1="77" x2="12" y2="77" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="17" y1="77" x2="22" y2="77" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="27" y1="77" x2="32" y2="77" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="37" y1="77" x2="42" y2="77" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="7" y1="87" x2="12" y2="87" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="17" y1="87" x2="22" y2="87" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="27" y1="87" x2="32" y2="87" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="7" y1="97" x2="12" y2="97" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="17" y1="97" x2="22" y2="97" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="27" y1="97" x2="32" y2="97" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+						<line x1="40" y1="87" x2="40" y2="97" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+							stroke-width="3"></line>
+					</g>
+				</svg>
+				<svg v-if="index === 1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 116 116" class="fxg-cube__icon" tabindex="-1"
+					focusable="false">
+					<g xmlns="http://www.w3.org/2000/svg" class="fxg-cube__icon-grey">
+						<line x1="45.43" y1="49.83" x2="1" y2="28.5" fill="none" stroke="#333333" stroke-miterlimit="10" stroke-width="3"
+							class="smallstroke"></line>
+						<line x1="45.43" y1="49.83" x2="45.43" y2="91.39" fill="none" stroke="#333333" stroke-miterlimit="10"
+							stroke-width="3" class="smallstroke"></line>
+						<line x1="89.69" y1="28.5" x2="45.43" y2="49.83" fill="none" stroke="#333333" stroke-miterlimit="10"
+							stroke-width="3" class="smallstroke"></line>
+						<line x1="66.19" y1="17.22" x2="21.93" y2="38.55" fill="none" stroke="#333333" stroke-miterlimit="10"
+							stroke-width="3" class="smallstroke"></line>
+						<polyline points="89.69 47.24 89.69 28.5 45.39 7.17 1 28.5 1 71.16 45.39 92.49 57.9 86.47" fill="none"
+							stroke="#333333" stroke-miterlimit="10" stroke-width="3" class="smallstroke"></polyline>
+						<path
+							d="M87.24,53.76a19.74,19.74,0,0,1,0,27.12,17.9,17.9,0,0,1-26,0,19.74,19.74,0,0,1,0-27.12A17.9,17.9,0,0,1,87.24,53.76Z"
+							fill="none" stroke="#333333" stroke-miterlimit="10" stroke-width="3" class="smallstroke"></path>
+						<polyline points="90.83 77.86 110.61 98.47 104.83 104.5 85.04 83.89" fill="none" stroke="#333333"
+							stroke-miterlimit="10" stroke-width="3" class="smallstroke"></polyline>
+					</g>
+					<g xmlns="http://www.w3.org/2000/svg" class="fxg-cube__icon-white">
+						<line x1="45.43" y1="49.83" x2="1" y2="28.5" fill="none" stroke="#ffffff" stroke-miterlimit="10" stroke-width="3"
+							class="smallstroke"></line>
+						<line x1="45.43" y1="49.83" x2="45.43" y2="91.39" fill="none" stroke="#ffffff" stroke-miterlimit="10"
+							stroke-width="3" class="smallstroke"></line>
+						<line x1="89.69" y1="28.5" x2="45.43" y2="49.83" fill="none" stroke="#ffffff" stroke-miterlimit="10"
+							stroke-width="3" class="smallstroke"></line>
+						<line x1="66.19" y1="17.22" x2="21.93" y2="38.55" fill="none" stroke="#ffffff" stroke-miterlimit="10"
+							stroke-width="3" class="smallstroke"></line>
+						<polyline points="89.69 47.24 89.69 28.5 45.39 7.17 1 28.5 1 71.16 45.39 92.49 57.9 86.47" fill="none"
+							stroke="#ffffff" stroke-miterlimit="10" stroke-width="3" class="smallstroke"></polyline>
+						<path
+							d="M87.24,53.76a19.74,19.74,0,0,1,0,27.12,17.9,17.9,0,0,1-26,0,19.74,19.74,0,0,1,0-27.12A17.9,17.9,0,0,1,87.24,53.76Z"
+							fill="none" stroke="#ffffff" stroke-miterlimit="10" stroke-width="3" class="smallstroke"></path>
+						<polyline points="90.83 77.86 110.61 98.47 104.83 104.5 85.04 83.89" fill="none" stroke="#ffffff"
+							stroke-miterlimit="10" stroke-width="3" class="smallstroke"></polyline>
+					</g>
+				</svg>
+				<svg v-if="index === 2" xmlns="http://www.w3.org/2000/svg" width="41" height="42" viewBox="0 0 41 42" tabindex="-1" focusable="false">    <g fill="none" fill-rule="evenodd" stroke="#333">        <path d="M1 11.136L20.683 1.27l19.648 9.865v19.728L20.683 40.73 1 30.864zM20.705 21L1 11.136M20.571 21v19.218M40.33 11.136L20.706 21M29.908 5.918l-19.626 9.868"></path>    </g></svg>
+				{{ item.title }}
+      </view>
+			
+    </view>
+	
+		<view v-else class="tabs-header-container-default">
+			<view class="tabs-header-default fxg-cube-container-default">
+				<view v-for="(item, index) in tabs" :key="index"
+					class="tab-title-default fxg-cube__content-default"
+					:class="{ active: currentIndex === index }"
+					@click="selectTab(index)">
+					{{ item.title }}
+				</view>
+			</view>
+		</view>
+    <view class="tabs-content">
+      <slot></slot>
+    </view>
+  </view>
+</template>
+
+<script>
+export default {
+  props: {
+    tabs: {
+      type: Array,
+      default: () => []
+    },
+	isSpecial: {
+		type: Boolean,
+		default: false
+	}
+  },
+  data() {
+    return {
+      currentIndex: 0,
+	  track_id: null
+    };
+  },
+  methods: {
+    selectTab(index) {
+		this.currentIndex = index;
+		this.$emit('update:current', index);
+		if(this.isSpecial && index === 0) {
+			uni.navigateTo({
+				url: '/pages/index/search_price'
+			});
+		} 
+    }
+  }
+}
+</script>
+
+<style scoped>
+.tabs-container {}
+.tabs-header-default {
+  display: flex;
+  /* background-color: #f5f5f5; */
+	justify-content: space-around;
+}
+.tab-title-default {
+  /* flex: 1; */
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+	/* border-bottom: 2px solid #f2f2f2; */
+
+}
+.tab-title-default.active {
+  color: #007AFF;
+  border-bottom: 2px solid #007AFF;
+}
+.tabs-content-default {
+  padding: 20px;
+}
+.tabs-header-container-default {
+	border-bottom: 2px solid #f2f2f2;
+}
+	
+	
+.tabs-container {}
+.tabs-header {
+	background-color: #f5f5f5;
+	list-style: none;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 120px;
+	transition: .25s ease height;
+	max-width: 475px;
+	padding-inline-start: 0;
+}
+.tab-title {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+	width: 158px;
+	height: 70px;
+	background-color: #fafafa;
+	padding: 25px 15px;
+	transition: .25s ease background-color, .25s ease height;
+	line-height: 14px;
+	font-size: 12px;
+}
+.tab-title.active {
+	height: 80px;
+	background: #104ebf;
+	color: white;
+	border-bottom: 2px solid #104ebf;
+
+	position: static;
+	margin-top: -10px;
+	.fxg-cube__icon-white {
+	  display: block;
+	}
+	.fxg-cube__icon-grey {
+		display: none;
+	}
+	
+}
+.tabs-container {
+	text-align: center;
+}
+.tabs-content {
+  padding: 20px;
+}
+.fxg-cube-container .fxg-cube__icon-white {
+    display: none;
+}
+.fxg-cube-container .fxg-cube__icon-grey {
+    display: block;
+}
+.fxg-cube-container .fxg-cube__content svg {
+    display: block;
+    margin: 0 auto 10px;
+    width: 40px;
+    height: 40px;
+}
+</style>
