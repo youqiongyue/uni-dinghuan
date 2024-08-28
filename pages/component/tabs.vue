@@ -86,6 +86,7 @@
 							stroke-width="3"></line>
 					</g>
 				</svg>
+				<!-- <img v-if="index === 0" class="fxg-cube__icon" src="../../static/track.png"></img> -->
 				<svg v-if="index === 1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 116 116" class="fxg-cube__icon" tabindex="-1"
 					focusable="false">
 					<g xmlns="http://www.w3.org/2000/svg" class="fxg-cube__icon-grey">
@@ -207,14 +208,13 @@ export default {
 	
 .tabs-container {}
 .tabs-header {
-	background-color: #f5f5f5;
 	list-style: none;
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	margin-top: 30px;
 	transition: .25s ease height;
-	max-width: 375px;
+	max-width: 65%;
 	padding-inline-start: 0;
 }
 .tab-title {
@@ -260,7 +260,7 @@ export default {
 }
 .fxg-cube-container .fxg-cube__content svg {
     display: block;
-    margin: 0 auto 10px;
+    margin: 10px auto 10px;
     width: 30px;
     height: 30px;
 }

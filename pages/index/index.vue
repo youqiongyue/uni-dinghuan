@@ -47,15 +47,13 @@
 									box-shadow: none;"
 							></u--input>
 							<u-button 
-										type="primary" 
+									type="primary" 
 									text="查询" 
-									color="#b62d2a"
-								@click="handleClick"
+								  @click="handleClick"
 									customStyle="
-									width: 80px;
-									margin-top: -49px;
-									height: 48px;
-									margin-right: -8px;
+										width: 184px;
+										height: 50px;
+										background: linear-gradient( 270deg, #296CE1 0%, #5391FF 100%);
 									"
 								></u-button>
 						</div>
@@ -64,24 +62,50 @@
 				</Tab>
 			</Tabs>
 		</view>
-		
-		<view class="special_price_container" style="margin-top: 150px;">
-				<view class="service_title">特价专区</view>
-			  <view class="service_price_bg">
-					<view class="service_price_item">
-						<view>美国</view>
-						<view>¥ 9.27/kg 99kg起</view>
-					</view>
-					<view class="service_price_item">
-						<view>美国</view>
-						<view>¥ 36.05/kg 20kg起</view>
-					</view>
-				</view>
-		</view>
-		
+
 		<view class="express_delivery">
-			<view class="service_title">服务项目</view>
-			<Tabs :tabs="serviceTabs" :current.sync="currentTabService">
+			<view class="service_title">
+				服务项目
+				<view class="service_title_down">SERVICE_ITEMS</view>
+			</view>
+
+			<view class="service_item_container">
+				<view class="service_item">
+					<u--image :showLoading="true" src="../../static/service_one.png" width="80px" height="80px" @click="click"></u--image>
+					<view class="service_item_title">海运门到门</view>
+					<view class="service_item_desc">文案文案文案</view>
+				</view>
+				<view class="service_item">
+					<u--image :showLoading="true" src="../../static/service_one.png" width="80px" height="80px" @click="click"></u--image>
+					<view class="service_item_title">海运门到门</view>
+					<view class="service_item_desc">文案文案文案</view>
+				</view>
+				<view class="service_item">
+					<u--image :showLoading="true" src="../../static/service_one.png" width="80px" height="80px" @click="click"></u--image>
+					<view class="service_item_title">海运门到门</view>
+					<view class="service_item_desc">文案文案文案</view>
+				</view>
+			</view>
+			<view class="service_item_container">
+				<view class="service_item">
+					<u--image :showLoading="true" src="../../static/service_one.png" width="80px" height="80px" @click="click"></u--image>
+					<view class="service_item_title">海运门到门</view>
+					<view class="service_item_desc">文案文案文案文案文案文案</view>
+					<view class="service_item_desc">文案文案文案文案文案文案</view>
+				</view>
+				<view class="service_item">
+					<u--image :showLoading="true" src="../../static/service_one.png" width="80px" height="80px" @click="click"></u--image>
+					<view class="service_item_title">海运门到门</view>
+					<view class="service_item_desc">文案文案文案文案文案文案</view>
+				</view>
+				<view class="service_item">
+					<u--image :showLoading="true" src="../../static/service_one.png" width="80px" height="80px" @click="click"></u--image>
+					<view class="service_item_title">海运门到门</view>
+					<view class="service_item_desc">文案文案文案文案文案文案</view>
+				</view>
+			</view>
+			
+			<!-- <Tabs :tabs="serviceTabs" :current.sync="currentTabService">
 				<Tab v-for="(tab, index) in tabs" :key="index" :index="index" :current="currentTabService">
 					<ul  class="fwxm-rigth-m" v-if="index === 0">				
 						<li class="">
@@ -117,9 +141,23 @@
 						</li>
 					</ul>
 				</Tab>
-			</Tabs>
+			</Tabs> -->
 		</view>
-	  
+		
+		<view class="special_price_container" style="margin-top: 150px;">
+				<view class="service_title">特价专区</view>
+			  <view class="service_price_bg">
+					<view class="service_price_item">
+						<view>美国</view>
+						<view>¥ 9.27/kg 99kg起</view>
+					</view>
+					<view class="service_price_item">
+						<view>美国</view>
+						<view>¥ 36.05/kg 20kg起</view>
+					</view>
+				</view>
+		</view>
+		
 		<view>
 			<view class="service_title">关于我们</view>
 			<view class="intro_whole_container">
@@ -305,7 +343,7 @@ import Tab from '../component/tab.vue';
 	}
 	.express_tab_container {
 		width: 60%;
-		height: 235px;
+		height: 335px;
 		background: #FFFFFF;
 		box-shadow: 0px 1px 7px 0px rgba(151,151,151,0.5);
 		margin: -50px auto;
@@ -320,10 +358,19 @@ import Tab from '../component/tab.vue';
   }
 	.service_title {
 		font-size: 32px;
-		color: #333;
+		color:  @primary-color;
 		font-weight: 700;
 		text-align: center;
 		margin-bottom: 50px;
+	}
+	.service_title_down {
+		color: rgba(19, 48, 116, 0.1674);
+		line-height: 17px;
+		text-align: left;
+		font-style: normal;
+		text-transform: uppercase;
+		text-align: center;
+		font-size: 18px;
 	}
 	.service_price_bg {
 		background: lightyellow;
@@ -334,7 +381,7 @@ import Tab from '../component/tab.vue';
 	}
 	.express_delivery {
 		background: #fff;
-		margin-top: 50px;
+		margin-top: 100px;
 	}
 
   .description {
@@ -347,6 +394,38 @@ import Tab from '../component/tab.vue';
     font-size: 14px;
     word-break: break-all;
   }
+
+	.service_item_container {
+		display: flex;
+		width: 80%;
+		margin: 0 auto;
+		margin: 30px auto;
+	}
+	.service_item {
+		width: 33%;
+		display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	}
+	.service_item_title {
+		font-weight: 500;
+    font-size: 15px;
+    color: @primary-color;
+    line-height: 15px;
+    text-align: right;
+    font-style: normal;
+    padding-top: 15px;
+	}
+	.service_item_desc {
+		font-weight: 400;
+    font-size: 13px;
+    color: #687EA2;
+    line-height: 9px;
+    text-align: justify;
+    font-style: normal;
+    padding-top: 15px;
+	}
 
   .link {
     color: #007AFF;
@@ -486,10 +565,11 @@ import Tab from '../component/tab.vue';
 		margin-top: -50px;
 	}
 	.search-input {
-		width: 586px;
+		width: 70%;
 		margin: 0 auto;
 		height: 46px;
 		padding-top: 50px;
+		display: flex;
 	}
 	.fxg-cube__content {
 		width: 158px;
