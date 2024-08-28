@@ -6,7 +6,8 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "%index.title%"
+				"navigationStyle": "custom"  // 这将隐藏默认的导航栏
+				// "navigationBarTitleText": "%index.title%"
 			}
 		},  {
 			"path": "pages/index/search_price",

@@ -1,6 +1,28 @@
 <template>
-	<view class="container">
-		<div class="banner">
+	<view class="express_container">
+    <header class="fxg-header fxg-header--sticky">
+      <nav class="fxg-nav">
+				  <view>
+						<a class="fxg-header__logo_wrapper fxg-keyboard" href="https://www.fedex.com/zh-cn/home.html" target="_self" data-analytics="FDX Logo | Home" onclick="FDX.DTM.pushLinkInfo(this)" aria-label="FedEx商标"><span class="fxg-mouse" tabindex="-1">
+							<img src="../../static/dh_logo.png" width="100%" height="100%" class="fxg-header__logo" alt="FedEx商标">
+						</span></a>
+					</view>
+					<view class="nav_item">首页</view>
+					<view class="nav_item">关于鼎环</view>
+					<view class="nav_item">服务项目</view>
+					<view class="nav_item">客服中心</view>
+					<view class="nav_item">新闻中心</view>
+					<view class="nav_item">常见问题</view>
+					<view class="nav_item">人才招聘</view>
+					<view class="nav_item">联系我们</view>
+			</nav>
+		</header>
+		<view class="banner"></view>
+	<!-- 		<u-swiper
+				class="express_swiper_container"
+				:list="list1"
+			></u-swiper> -->
+		<view class="express_tab_container">
 			<Tabs :tabs="tabs" :current.sync="currentTab" :isSpecial="true">
 				<Tab v-for="(tab, index) in tabs" :key="index" :index="index" :current="currentTab">
 					<view v-if="index === 0">{{ tab.title }}1111 Content</view>
@@ -41,9 +63,9 @@
 					<view v-if="index === 2">{{ tab.title }}333 Content</view>
 				</Tab>
 			</Tabs>
-	  </div>
+		</view>
 		
-		<view class="special_price_container">
+		<view class="special_price_container" style="margin-top: 150px;">
 				<view class="service_title">特价专区</view>
 			  <view class="service_price_bg">
 					<view class="service_price_item">
@@ -153,9 +175,15 @@ import Tab from '../component/tab.vue';
         applicationLocale: '',
 				currentTab: 0,
 				value: '',
+				value1: '',
 				imgSrc: 'https://img.sypost.com/index/UPIMG/DIYShow/About.png',
 				currentTabService: 0,
 				activeIndex: 0, // 当前激活的标签索引
+				list1: [
+					'https://cdn.uviewui.com/uview/swiper/swiper1.png',
+					'https://cdn.uviewui.com/uview/swiper/swiper2.png',
+					'https://cdn.uviewui.com/uview/swiper/swiper3.png',
+				],
 				tabList: [
 					{ label: 'Tab 1', content: 'Content of Tab 1' },
 					{ label: 'Tab 2', content: 'Content of Tab 2' },
@@ -211,47 +239,6 @@ import Tab from '../component/tab.vue';
       uni.onLocaleChange((e) => {
         this.applicationLocale = e.locale;
       })
-	  
-	    const reqData = {
-				"Verify": {
-				"Clientid": "XC",
-				"Token": "WVFCVUc=ng7kbKSHS6gV0nJvkf8j"
-				},
-				"Data": {
-				"CountryCode": "US",
-				"Weight": "1",
-				"GoodsType": "WPX",
-				"PostCode": "",
-				"VolumeArr": [
-					{
-					"Longs": "12",
-					"Width": "14",
-					"Height": "13",
-					"Num": "1",
-					"Weight": "3"
-					},
-					{
-					"Longs": "12",
-					"Width": "14",
-					"Height": "13",
-					"Weight": "1",
-					"Num": "1"
-					}
-				]
-				}
-		  }
-	  
-			uni.request({
-					url: 'http://yqbug.kingtrans.net/PostInterfaceService?method=searchPrice', //仅为示例，并非真实接口地址。
-					data: reqData,
-					header: {
-							'Content-Type': 'application/json;charset=UTF-8' //自定义请求头信息
-					},
-					success: (res) => {
-							console.log(res.data);
-							this.text = 'request success';
-					}
-			});
     },
     methods: {
 		onChange(index) {
@@ -285,7 +272,47 @@ import Tab from '../component/tab.vue';
   }
 </script>
 
-<style>
+<style lang="less"> 
+  @primary-color: #006FF0;
+
+  .fxg-header--sticky {
+		z-index: 11000;
+    position: fixed;
+    top: 0;
+	}
+	.fxg-header {
+		width: 100%;
+		height: 55px;
+		background: @primary-color;
+		box-shadow: 0px 1px 6px 2px rgba(211,211,211,0.24);
+	}
+	.fxg-nav {
+		display: flex;
+		width: 970px;
+		margin: 0 auto;
+		color: white;
+		line-height: 55px;
+	}
+	.fxg-header__logo {
+		width: 60px;
+		height: 40px;
+	  margin-top: 5px;
+	}
+	
+	.nav_item {
+		flex: 1;
+		text-align: center;
+	}
+	.express_tab_container {
+		width: 60%;
+		height: 235px;
+		background: #FFFFFF;
+		box-shadow: 0px 1px 7px 0px rgba(151,151,151,0.5);
+		margin: -50px auto;
+	}
+	.express_container {
+		margin-top: 55px;
+	}
   .title {
     font-size: 16px;
     font-weight: bold;
@@ -412,8 +439,12 @@ import Tab from '../component/tab.vue';
     transform: rotate(45deg);
   }
 	
+	.express_swiper_container {
+		width: 100%;
+		height: 420px;
+	}
 	.banner {
-	  background:transparent url(https://www.gzdhgj.com/ufile/202303222222418596.png) center center no-repeat;
+	  background:transparent url('../../static/banner.png') center center no-repeat;
 		background-position: 50% 20%;
 		display: block;
 		margin: 0 auto;

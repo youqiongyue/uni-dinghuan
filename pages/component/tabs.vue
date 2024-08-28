@@ -177,7 +177,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
+@primary-color: #006FF0;
 .tabs-container {}
 .tabs-header-default {
   display: flex;
@@ -211,9 +212,9 @@ export default {
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 120px;
+	margin-top: 30px;
 	transition: .25s ease height;
-	max-width: 475px;
+	max-width: 375px;
 	padding-inline-start: 0;
 }
 .tab-title {
@@ -223,17 +224,17 @@ export default {
   cursor: pointer;
 	width: 158px;
 	height: 70px;
-	background-color: #fafafa;
-	padding: 25px 15px;
+	background-color: #F3F8FF;
+	/* padding: 25px 15px; */
 	transition: .25s ease background-color, .25s ease height;
 	line-height: 14px;
 	font-size: 12px;
 }
 .tab-title.active {
 	height: 80px;
-	background: #104ebf;
+	background: @primary-color;
 	color: white;
-	border-bottom: 2px solid #104ebf;
+	border-bottom: 2px solid @primary-color;
 
 	position: static;
 	margin-top: -10px;
@@ -260,7 +261,7 @@ export default {
 .fxg-cube-container .fxg-cube__content svg {
     display: block;
     margin: 0 auto 10px;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 }
 </style>
