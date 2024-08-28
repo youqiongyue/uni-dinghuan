@@ -18,10 +18,7 @@
 			</nav>
 		</header>
 		<view class="banner"></view>
-	<!-- 		<u-swiper
-				class="express_swiper_container"
-				:list="list1"
-			></u-swiper> -->
+
 		<view class="express_tab_container">
 			<Tabs :tabs="tabs" :current.sync="currentTab" :isSpecial="true">
 				<Tab v-for="(tab, index) in tabs" :key="index" :index="index" :current="currentTab">
@@ -144,9 +141,65 @@
 			</Tabs> -->
 		</view>
 		
-		<view class="special_price_container" style="margin-top: 150px;">
-				<view class="service_title">特价专区</view>
-			  <view class="service_price_bg">
+		<view class="special_price_container">
+				<view class="service_title">
+					特价专区
+					<view class="service_title_down">SPECIAL_OFFER</view>
+				</view>
+				<view class="special_item_container">
+					<view class="uni-margin-wrap">
+						<view class="special_to_left" @click="toLeft">
+							<img src="../../static/left_icon.png" ></img>
+						</view>
+						<swiper 
+						  class="swiper" 
+						  circular 
+							:indicator-dots="indicatorDots" 
+							:autoplay="autoplay" 
+							:interval="interval"
+							:duration="duration"
+							:current="currentIndex"
+              @change="onSwiperChange"
+						>
+							<swiper-item
+								v-for="(group, index) in specialPriceGroup"
+								:key="index"
+								class="swiper-item_child"
+							>
+								<view
+									class="swiper-item uni-bg-red"
+									v-for="(item, imgIndex) in group"
+									:key="imgIndex"
+									:style="{ 
+										background: 'url(' + item.bg + ') no-repeat',
+										backgroundSize: 'contain'
+									}"
+								> 
+								{{ item.price }}
+									<!-- 你可以在这里添加其他内容，比如标题或描述 -->
+								</view>
+							</swiper-item>
+							<!-- <swiper-item class="swiper-item_child">
+								<view class="swiper-item uni-bg-red">
+	
+								</view>
+								<view class="swiper-item uni-bg-red">A</view>
+								<view class="swiper-item uni-bg-red">A</view>
+								<view class="swiper-item uni-bg-red">A</view>
+							</swiper-item>
+							<swiper-item>
+								<view class="swiper-item uni-bg-green">B</view>
+							</swiper-item>
+							<swiper-item>
+								<view class="swiper-item uni-bg-blue">C</view>
+							</swiper-item> -->
+						</swiper>
+						<view class="special_to_right" @click="toRight">
+							<img src="../../static/right_icon.png" ></img>
+						</view>
+					</view>
+				</view>
+			  <!-- <view class="service_price_bg">
 					<view class="service_price_item">
 						<view>美国</view>
 						<view>¥ 9.27/kg 99kg起</view>
@@ -155,7 +208,7 @@
 						<view>美国</view>
 						<view>¥ 36.05/kg 20kg起</view>
 					</view>
-				</view>
+				</view> -->
 		</view>
 		
 		<view>
@@ -172,11 +225,25 @@
 				</view>
 			</view>
 		</view>
+
+		<view class="news_container">
+			<view class="service_title">
+				新闻中心
+				<view class="service_title_down">NEWS_CENTER</view>
+			</view>
+		</view>
+
+		<view class="cor_container">
+			<view class="service_title">
+			  合作伙伴
+				<view class="service_title_down">COOPERATIVE PARTNER</view>
+			</view>
+		</view>
 		
     <view class="title">{{$t('index.demo')}}</view>ddd
     <view class="description">{{$t('index.demo-description')}}</view>
     <view class="detail-link">{{$t('index.detail')}}: <text
-        class="link">https://uniapp.dcloud.net.cn/collocation/i18n</text></view>
+      class="link">https://uniapp.dcloud.net.cn/collocation/i18n</text></view>
     <view class="locale-setting">{{$t('index.language-info')}}</view>
     <view class="list-item">
       <text class="k">{{$t('index.system-language')}}:</text>
@@ -217,6 +284,12 @@ import Tab from '../component/tab.vue';
 				imgSrc: 'https://img.sypost.com/index/UPIMG/DIYShow/About.png',
 				currentTabService: 0,
 				activeIndex: 0, // 当前激活的标签索引
+				background: ['color1', 'color2', 'color3'],
+				indicatorDots: true,
+				autoplay: false,
+				interval: 5000,
+				duration: 1000,
+				currentIndex: 0,
 				list1: [
 					'https://cdn.uviewui.com/uview/swiper/swiper1.png',
 					'https://cdn.uviewui.com/uview/swiper/swiper2.png',
@@ -236,6 +309,48 @@ import Tab from '../component/tab.vue';
 					{ content: 'Content of Tab 1' },
 					{ content: 'Content of Tab 2' },
 					{ content: 'Content of Tab 3' }
+				],
+				specialPrice: [
+					{
+						'price': 9.72,
+						'num': 99,
+						'bg': '../../static/price_one.png'
+					},
+					{
+						'price': 9.72,
+						'num': 99,
+						'bg': '../../static/price_two.png'
+					},
+					{
+						'price': 9.72,
+						'num': 99,
+						'bg': '../../static/price_three.png'
+					},
+					{
+						'price': 9.72,
+						'num': 99,
+						'bg': '../../static/price_four.png'
+					},
+					{
+						'price': 9.72,
+						'num': 99,
+						'bg': '../../static/price_one.png'
+					},
+					{
+						'price': 9.72,
+						'num': 99,
+						'bg': '../../static/price_two.png'
+					},
+					{
+						'price': 9.72,
+						'num': 99,
+						'bg': '../../static/price_three.png'
+					},
+					{
+						'price': 9.72,
+						'num': 99,
+						'bg': '../../static/price_four.png'
+					}
 				],
 				serviceTabs: [
 					{ title: '国际空运' },
@@ -267,7 +382,14 @@ import Tab from '../component/tab.vue';
             code: 'ja'
           }
         ]
-      }
+      },
+			specialPriceGroup() {
+				const groups = [];
+				for (let i = 0; i < this.specialPrice.length; i += 4) {
+					groups.push(this.specialPrice.slice(i, i + 4));
+				}
+        return groups;
+			}
     },
     onLoad() {
       let systemInfo = uni.getSystemInfoSync();
@@ -279,39 +401,94 @@ import Tab from '../component/tab.vue';
       })
     },
     methods: {
-		onChange(index) {
-			console.log("当前选中的标签索引：", index);
-		},
-		handleClick() {
-			console.log(this.value)
-			const trackId = this.value;
-			// if(index === 1) {
-			uni.navigateTo({ 
-				url: '/pages/index/search_track?track_id=' + trackId
-			});
-			// }
-		},
-		onLocaleChange(e) {
-		if (this.isAndroid) {
-			uni.showModal({
-			content: this.$t('index.language-change-confirm'),
-			success: (res) => {
-				if (res.confirm) {
-				uni.setLocale(e.code);
+			onSwiperChange(event) {
+        this.currentIndex = event.detail.current;
+			},
+			toLeft() {
+				if (this.currentIndex > 0) {
+					this.currentIndex--;
 				}
+			},
+			toRight() {
+				if (this.currentIndex < this.specialPriceGroup.length - 1) {
+					this.currentIndex++;
+				}
+			},
+			handleClick() {
+				console.log(this.value)
+				const trackId = this.value;
+				// if(index === 1) {
+				uni.navigateTo({ 
+					url: '/pages/index/search_track?track_id=' + trackId
+				});
+				// }
+			},
+			onLocaleChange(e) {
+			if (this.isAndroid) {
+				uni.showModal({
+				content: this.$t('index.language-change-confirm'),
+				success: (res) => {
+					if (res.confirm) {
+					uni.setLocale(e.code);
+					}
+				}
+				})
+			} else {
+				uni.setLocale(e.code);
+				this.$i18n.locale = e.code;
 			}
-			})
-		} else {
-			uni.setLocale(e.code);
-			this.$i18n.locale = e.code;
-		}
-		}
+			}
     }
   }
 </script>
 
 <style lang="less"> 
   @primary-color: #006FF0;
+
+	.uni-margin-wrap {
+		width: 690rpx;
+		width: 100%;
+
+	}
+	.special_to_left {
+		width: 30px;
+		height: 30px;
+		position: absolute;
+    left: 15%;
+    top: 30%;
+		cursor: pointer;
+	}
+	.special_to_right {
+		width: 30px;
+		height: 30px;
+		position: absolute;
+    right: 15%;
+    top: 30%;
+		cursor: pointer;
+	}
+	.swiper {
+		height: 180px;
+		width: 62%;
+		margin: 0 auto;
+	}
+	.swiper-item_child {
+		display: flex;
+	}
+	.swiper-item {
+		display: block;
+		text-align: center;
+		flex: 1;
+		margin: 10px;
+	}
+	.info {
+		position: absolute;
+		right: 20rpx;
+	}
+	.cor_container {
+		background: url('../../static/cor_bg.png') no-repeat;
+		width: 100%;
+		height: 400px ;
+	}
 
   .fxg-header--sticky {
 		z-index: 11000;
@@ -337,6 +514,9 @@ import Tab from '../component/tab.vue';
 	  margin-top: 5px;
 	}
 	
+	.special_item_container {
+		position: relative;
+	}
 	.nav_item {
 		flex: 1;
 		text-align: center;
@@ -361,7 +541,7 @@ import Tab from '../component/tab.vue';
 		color:  @primary-color;
 		font-weight: 700;
 		text-align: center;
-		margin-bottom: 50px;
+		margin-bottom: 40px;
 	}
 	.service_title_down {
 		color: rgba(19, 48, 116, 0.1674);
@@ -371,13 +551,11 @@ import Tab from '../component/tab.vue';
 		text-transform: uppercase;
 		text-align: center;
 		font-size: 18px;
+		margin-top: 5px;
 	}
 	.service_price_bg {
 		background: lightyellow;
 		display: flex;
-	}
-	.service_price_item {
-		width: 160px;
 	}
 	.express_delivery {
 		background: #fff;
@@ -425,6 +603,9 @@ import Tab from '../component/tab.vue';
     text-align: justify;
     font-style: normal;
     padding-top: 15px;
+	}
+	.special_price_container {
+		margin-top: 60px;
 	}
 
   .link {
