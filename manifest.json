@@ -75,7 +75,13 @@
         },
         "title" : "鼎环国际物流",
         "router" : {
-            "mode" : "hash"
+            "mode" : "history"
+        },
+        "template" : "template.html",
+        "optimization" : {
+            "treeShaking" : {
+                "enable" : true
+            }
         }
     }
 }

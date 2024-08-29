@@ -8,6 +8,9 @@
     },
     onHide: function() {
       console.log('App Hide')
+    },
+    mounted() {
+      document.dispatchEvent(new Event('render-event'));
     }
   }
 </script>

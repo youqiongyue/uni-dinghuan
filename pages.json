@@ -21,7 +21,26 @@
 				"navigationBarTitleText": "",
 				"navigationStyle": "custom"
 			}
-		},{
+		},
+		{
+			"path": "pages/index_en/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},  {
+			"path": "pages/index_en/search_price",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/index_en/search_track",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/component/component",
 			"style": {
 				"navigationBarTitleText": "%index.component%",
