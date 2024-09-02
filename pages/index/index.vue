@@ -94,8 +94,10 @@
 							customStyle="
 								width: 284px;
 								height: 50px;
+								margin-top: 50px;
 								background: linear-gradient( 270deg, #006FF0 0%, #7AB8FF 100%);;
 							"
+							@click="jumpSearchPrice"
 						></u-button>
 				  </view>
 
@@ -305,7 +307,15 @@
 										backgroundSize: 'contain'
 									}"
 								> 
-								{{ item.price }}
+								  <view class="swiper-item_country">
+										<img class="swiper-item_country_img" src="../../static/us.png"></img>
+										<view class="swiper-item_country_name">美国</view>
+									</view>
+									<view class="swiper-item_price">
+										<view class="swiper-item_price_num">￥ <span class="swiper-item_price_detail"> 9.72</span> <span>/kg</span></view>
+                    <view class="swiper-item_price_kg">99kg 起</view>
+									</view>
+				
 									<!-- 你可以在这里添加其他内容，比如标题或描述 -->
 								</view>
 							</swiper-item>
@@ -475,6 +485,8 @@
 				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="180px" height="120px"></u--image>
 			</view>
 		</view>
+
+		<Footer></Footer>
 		
     <view class="title">{{$t('index.demo')}}</view>ddd
     <view class="description">{{$t('index.demo-description')}}</view>
@@ -503,12 +515,14 @@
 import Navbar from '../component/nav.vue';
 import Tabs from '../component/tabs.vue';
 import Tab from '../component/tab.vue';
+import Footer from '../component/Footer.vue';
 
   export default {
 	components: {
 	    Navbar,
 			Tabs,
-			Tab
+			Tab,
+			Footer
 	},
     data() {
 			uni.setLocale('zh-Hans');
@@ -654,6 +668,11 @@ import Tab from '../component/tab.vue';
 					this.currentIndex++;
 				}
 			},
+			jumpSearchPrice() {
+				uni.navigateTo({
+					url: '/pages/index/search_price'
+				});
+			},
 			switchToChinese() {
         uni.setLocale('zh-Hans');
 				this.$i18n.locale = 'zh-Hans';
@@ -703,6 +722,30 @@ import Tab from '../component/tab.vue';
 		width: 690rpx;
 		width: 100%;
 
+	}
+	.swiper-item_country {
+		display: flex;
+		color: #FFFFFF;
+    font-weight: 300;
+		margin: 10px 10px;
+		justify-content: space-between;
+	}
+	.swiper-item_price_detail {
+		font-size: 26px;
+    font-weight: 600;
+	 }
+	.swiper-item_price_kg {
+		padding-top: 10px;
+		font-size: 13px;
+	}
+	.swiper-item_price {
+		display: flex;
+		color: #FFFFFF;
+		font-weight: 300;
+    justify-content: space-between;
+    margin: 10px 10px;
+    margin-top: 40px;
+		align-items: center;
 	}
 	.express_search_price_container {
 		display: flex;
@@ -955,7 +998,7 @@ import Tab from '../component/tab.vue';
     margin-bottom: 20px;
 	}
 	.news_item_title {
-		font-weight: 600;
+		font-weight: 500;
     color: #333333;
 	}
 
