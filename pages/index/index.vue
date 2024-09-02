@@ -1,5 +1,5 @@
 <template>
-  <view class="express_container">
+	<view class="express_container">
     <header class="fxg-header fxg-header--sticky">
       <nav class="fxg-nav">
 				<view class="fxg-nav_left">
@@ -31,8 +31,7 @@
 		<view class="express_tab_container">
 			<Tabs :tabs="tabs" :current.sync="currentTab" :isSpecial="true">
 				<Tab v-for="(tab, index) in tabs" :key="index" :index="index" :current="currentTab">
-					<view v-if="index === 0">{{ tab.title }}1111 Content</view>
-					<view v-if="index === 1">
+					<view v-if="index === 0">
 						<div class="search-input">
 							<u--input
 								placeholder="请输入你的单号"
@@ -64,6 +63,42 @@
 								></u-button>
 						</div>
 					</view>
+					<view v-if="index === 1" >
+						<!-- <view class="express_search_price_container">
+							<view class="express_price_item">
+								<view class="express_price_item_woding">发往目的地</view>
+								<u--input
+									name="countryName"
+									placeholder="请输入目的地国家"
+									border="surround"
+									class="express_input express_search_price_button"
+									>
+								</u--input>
+							</view>
+
+						  <view class="express_price_item">
+								<view class="express_price_item_woding">重量</view>
+								<u--input
+									placeholder="请输入内容"
+									border="surround"
+									type="number"
+									class="express_input express_search_price_button"
+								>
+								</u--input>
+							</view>
+						</view> -->
+
+						<u-button 
+							type="primary" 
+							text="立即查价" 
+							customStyle="
+								width: 284px;
+								height: 50px;
+								background: linear-gradient( 270deg, #006FF0 0%, #7AB8FF 100%);;
+							"
+						></u-button>
+				  </view>
+
 					<view v-if="index === 2">{{ tab.title }}333 Content</view>
 				</Tab>
 			</Tabs>
@@ -480,7 +515,7 @@ import Tab from '../component/tab.vue';
       return {
         systemLocale: '',
         applicationLocale: 'zh-Hans',
-				currentTab: 0,
+				currentTab: 1,
 				value: '',
 				value1: '',
 				imgSrc: 'https://img.sypost.com/index/UPIMG/DIYShow/About.png',
@@ -503,8 +538,8 @@ import Tab from '../component/tab.vue';
 					{ label: 'Tab 3', content: 'Content of Tab 3' }
 				],
 				tabs: [
-					{ title: '立即查价', },
-					{ title: '追踪货物' },
+				  { title: '追踪货物' },
+					{ title: '立即查价' },
 					{ title: '联系我们' }
 				],
 				tabContents: [
@@ -668,6 +703,16 @@ import Tab from '../component/tab.vue';
 		width: 690rpx;
 		width: 100%;
 
+	}
+	.express_search_price_container {
+		display: flex;
+		justify-content: space-around;
+	}
+	.express_price_item {
+		text-align: left;
+    color: #666666;
+    width: 40%;
+    margin-bottom: 20px;
 	}
 	.special_to_left {
 		width: 30px;
@@ -882,6 +927,18 @@ import Tab from '../component/tab.vue';
     color: #007AFF;
     margin-left: 10px;
   }
+	.express_input {
+		padding-left: 12px;
+		padding-right: 0px;
+		background: #fafafa;
+		font-size: 20px;
+		font-weight: 300;
+		width: calc(100% - 3px);
+		border: 0;
+		height: 38px;
+		border-radius: 0;
+		box-shadow: none;
+	}
 
 	.news_item_container {
 		width: 60%;
