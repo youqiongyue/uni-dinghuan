@@ -727,10 +727,11 @@ import Footer from '../component/Footer.vue';
 	}
 	.swiper-item_country {
 		display: flex;
-		color: #FFFFFF;
+    color: #fff;
     font-weight: 300;
-		margin: 10px 10px;
-		justify-content: space-between;
+    margin: 10px 10px;
+    width: 258px;
+    justify-content: space-between;
 	}
 	.swiper-item_price_detail {
 		font-size: 26px;
@@ -746,8 +747,9 @@ import Footer from '../component/Footer.vue';
 		font-weight: 300;
     justify-content: space-between;
     margin: 10px 10px;
-    margin-top: 40px;
+    margin-top: 80px;
 		align-items: center;
+		width: 258px;
 	}
 	.express_search_price_container {
 		display: flex;
