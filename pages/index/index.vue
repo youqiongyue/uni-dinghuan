@@ -473,16 +473,18 @@
 				<view class="service_title_down">COOPERATIVE PARTNER</view>
 			</view>
 			<view class="cor_container_img_container">
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="180px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="180px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="180px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="180px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
 			</view>
 			<view class="cor_container_img_container">
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="180px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="180px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="180px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="180px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
 			</view>
 		</view>
 
@@ -794,7 +796,8 @@ import Footer from '../component/Footer.vue';
 	.cor_container {
 		background: url('../../static/cor_bg.png') no-repeat;
 		width: 100%;
-		height: 450px;
+		height: 480px;
+		background-size: cover;
 	}
 	.cor_container_title {
 		padding-top: 50px;
