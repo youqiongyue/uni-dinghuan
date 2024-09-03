@@ -2,7 +2,6 @@
 	<view>
 		<Navigator />
 		<view class="search_price_container">
-
 			<view class="form-container">
 				<view class="search_price_title">首页 / <span class="search_price_title_blue">立即查价</span></view>
 				<view class="form-container_upper">
@@ -67,7 +66,7 @@
 						<u--input
 							v-model="model1.expressInfo.length"
 							type="number"
-						    class="search-input search-input_short"
+						  class="search-input search-input_short"
 							border="surround"
 						>
 							<template #suffix>
@@ -83,7 +82,7 @@
 						<u--input
 							v-model="model1.expressInfo.width"
 							type="number"
-						    class="search-input search-input_short"
+						  class="search-input search-input_short"
 							border="surround"
 						>
 							<template #suffix>
@@ -99,7 +98,7 @@
 						<u--input
 							v-model="model1.expressInfo.height"
 							type="number"
-						    class="search-input search-input_short"
+						  class="search-input search-input_short"
 							border="surround"
 						>
 							<template #suffix>
@@ -390,8 +389,6 @@ export default {
 	max-width: 992px;
 	margin: 0 auto;
 	font-size: 12px;
-
-
 }
 .container {
   padding: 20px;

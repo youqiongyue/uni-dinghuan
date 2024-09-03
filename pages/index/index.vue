@@ -12,8 +12,8 @@
 								placeholder="请输入你的单号"
 								border="surround"
 								v-model="value"
-		
 								ref="trackIdInput"
+								type="number"
 								customStyle="
 									padding-left: 12px;
 									padding-right: 0px;

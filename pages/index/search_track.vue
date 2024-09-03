@@ -1,7 +1,9 @@
 <template>
 	<view>
-		<div class="form-headline">运单详情</div>
-		<view class="form-container">
+		<Navigator />
+		<view class="search_track_container">
+		  <view class="form-container">
+			<view class="search_price_title">首页 / <span class="search_price_title_blue">单号追踪</span></view>
 			<u--form
 					class="form-container-total"
 					labelPosition="left"
@@ -11,7 +13,6 @@
 					ref="uForm"
 			>
 				<u-form-item
-					label="快递单号"
 					prop="expressInfo.trackNumber"
 					class="custom-width"
 					ref="item1"
@@ -19,25 +20,24 @@
 					<u--input
 						v-model="model1.expressInfo.trackNumber"
 						border="surround"
+						class="search-input"
+						placeholder="请输入单号"
 					></u--input>
 					<u-button 
 					  class="button-search"
 					  type="primary"
 						text="查询"
 						@click="searchTrack"
-						customStyle="{width: 80px;}">
+					>
 					</u-button>
 				</u-form-item>
-				
 			</u--form>
 			<view v-if="isLoading">
-				loading<u-loading-icon></u-loading-icon>
+				<u-loading-icon></u-loading-icon>
 			</view>
-			<view v-else>
-				<view v-if="hasResult" class="route-result-container">
-	
-					<h3>路由详情</h3>
-					<view v-for="(routeItem, index) in trackInfo[0].items">
+			<view v-else-if="hasResult">
+				<view v-if="isSucc" class="route-result-container">
+						<view v-for="(routeItem, index) in trackInfo[0].items">
 						<view class="route">
 							<view class="route-status-icon">
 								<img data-v-1c16d66e="" src="data:image/png;base64,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">
@@ -53,17 +53,26 @@
 						</view>
 					</view>
 				</view>
-				<view v-else>
-			      无订单信息
+				<view v-else class="error-result">
+			    无订单信息
 				</view>
 			</view>
 			
 		</view>
+	  </view>
+		<Footer></Footer>
 	</view>
 </template>
 
 <script>
+import Navigator from '../component/Navigation.vue';
+import Footer from '../component/Footer.vue';
+
 export default {
+	components: {
+		Footer,
+		Navigator
+	},
 	data() {
 		return {
 			model1: {
@@ -81,14 +90,17 @@ export default {
 			routers: [
 			],
 			trackInfo: {},
-			isLoading: false,
-			hasResult: false
+			isLoading: true,
+			hasResult: false,
+			isSucc: false
 		}
 	},
 	mounted() {
 		const query = this.$route.query;
 		const trackId = query.track_id;
 		console.log(trackId)
+		if(!trackId) return;
+		// 4070905457
 		const reqData = {
 			"Verify": {
 				"Clientid": "YMR000",
@@ -99,7 +111,8 @@ export default {
 				}]
     }
 		this.isLoading = true;
-		this.hasResult = true;
+		this.model1.expressInfo.trackNumber = trackId;
+		// this.hasResult = true;
 		
 		// let res = {};
 		// res.data = {
@@ -184,18 +197,20 @@ export default {
 					//         }
 					//     ]
 					// }
-					this.text = 'request success';
 					
-					if (res.data.statusCode === 'success') {
-						this.hasResult = true;
+					if (res.data.statusCode === 'success' && res.data.returnDatas[0].statusCode === 'success' ) {
+						this.isSucc = true;
 						this.trackInfo = res.data.returnDatas;
 						console.log(this.trackInfo)
 						// this.routes = this.trackInfo[0].items;
 						// console.log(this.routes)
+					} else {
+						this.isSucc = false;
 					}
 	  		},
 				fail: () => {
-					
+					this.isSucc = false;
+					uni.$u.toast('错误单号')
 				},
 				complete: () => {
 					this.isLoading = false;
@@ -216,25 +231,34 @@ export default {
 </script>
 
 <style>
+@bg-color: #F5F5F5;
+@primary-color: #006FF0;
+
 .form-container {
-  background: red;
-	background-color: rgb(242, 242, 242);
+/*  background: red;
+	background-color: rgb(242, 242, 242); */
+	width: 100%;
+	max-width: 992px;
+	margin: 0 auto;
+	font-size: 12px;
 }
 .form-container-total {
-	width: 500px;
-	margin: 0 auto;
+	background: white;
+	border-radius: 4px;
+	padding: 15px 30px;
+	
 }
-
-.form-headline {
-	text-align: center;
-	width: 100%;
-	padding: 56px 0;
-	font-size: 38px;
-	font-weight: 300;
+.form-container {
+	background: @bg-color;
+	margin-top: 60px;
+	min-height: calc(100vh - 310px);
 }
 .button-search {
-	width: 80px;
-	margin-bottom: 0;
+	width: 30%;
+	height: 45px;
+	color: white;
+	background:  linear-gradient( 270deg, #296CE1 0%, #5391FF 100%);
+	margin: 0;
 }
 .route-result-container {
 	width: 500px;
@@ -256,4 +280,41 @@ export default {
 		width: 30px;
 	}
 }
+.search_track_container {
+	background: #F5F5F5;
+	margin-top: 60px;
+	min-height: calc(100vh - 310px);
+}
+.search_price_title {
+	font-weight: 400;
+	font-size: 17px;
+	color: rgba(153, 153, 153, 0.88);
+	padding-top: 40px;
+	margin-bottom: 20px;
+}
+.search_price_title_blue {
+	color: #006FF0;
+	padding-left: 10px;
+}
+
+.search-input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fafafa;
+	height: 30px;
+	margin-right: 20px;
+}
+
+.error-result {
+	width: 100%;
+	min-height: 300px;
+	display: flex;
+	justify-content: center;
+	font-size: 18px;
+	color: rgba(153, 153, 153, 0.88);
+	align-items: center;
+}
+
 </style>
