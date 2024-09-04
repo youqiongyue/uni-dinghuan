@@ -64,11 +64,14 @@
 						</view> -->
 
 						<u-button 
-							type="primary" 
 							text="立即查价" 
+							size="large"
 							customStyle="
-								width: 284px;
+								width: 320px;
 								height: 50px;
+								fontSize: 16px;
+								fontWeight: 600;
+								color: white;
 								margin-top: 50px;
 								background: linear-gradient( 270deg, #006FF0 0%, #7AB8FF 100%);;
 							"

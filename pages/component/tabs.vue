@@ -163,7 +163,7 @@ export default {
 	/* padding: 25px 15px; */
 	transition: .25s ease background-color, .25s ease height;
 	line-height: 14px;
-	font-size: 12px;
+	font-size: 14px;
 }
 .tab-title.active {
 	height: 80px;
