@@ -890,7 +890,7 @@ import Footer from '../component/Footer.vue';
 	}
 	.service_item_title {
 		font-weight: 500;
-		font-size: 15px;
+		font-size: 16px;
 		color: @primary-color;
 		line-height: 15px;
 		text-align: right;
