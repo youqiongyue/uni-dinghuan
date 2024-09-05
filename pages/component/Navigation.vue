@@ -3,7 +3,7 @@
       <nav class="fxg-nav">
 				<view class="fxg-nav_left">
 				  <view>
-						<a class="fxg-header__logo_wrapper fxg-keyboard" href="https://www.fedex.com/zh-cn/home.html" target="_self" data-analytics="FDX Logo | Home" onclick="FDX.DTM.pushLinkInfo(this)" aria-label="FedEx商标"><span class="fxg-mouse" tabindex="-1">
+						<a class="fxg-header__logo_wrapper fxg-keyboard" href="https://dhcargo.com.cn" target="_self" data-analytics="FDX Logo | Home" onclick="FDX.DTM.pushLinkInfo(this)" aria-label="鼎环物流商标"><span class="fxg-mouse" tabindex="-1">
 							<img src="../../static/dh_logo.png" width="100%" height="100%" class="fxg-header__logo" alt="dh商标">
 						</span></a>
 					</view>

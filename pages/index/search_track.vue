@@ -3,7 +3,7 @@
 		<Navigator />
 		<view class="search_track_container">
 		  <view class="form-container">
-			<view class="search_price_title">首页 / <span class="search_price_title_blue">单号追踪</span></view>
+			<view class="search_price_title"><span class="search_price_home" @click="goHome">首页</span> / <span class="search_price_title_blue">单号追踪</span></view>
 			<u--form
 					class="form-container-total"
 					labelPosition="left"
@@ -204,6 +204,11 @@ export default {
 			// 使用 pushState 更新 URL
 			window.history.pushState({ path: newUrl.href }, '', newUrl.href);
 			this.getTrackDetail(trackId);
+		},
+		goHome() {
+			uni.reLaunch({
+				url: '/' // 替换为您的首页路径
+			});
 		}
 	}
 }
@@ -325,8 +330,12 @@ export default {
 
 .route-status-icon-circle {
 	text-align: center;
-    margin-right: 60px;
-    width: 30px;
+	margin-right: 60px;
+	width: 30px;
+}
+
+.search_price_home {
+	cursor: pointer;
 }
 
 </style>
