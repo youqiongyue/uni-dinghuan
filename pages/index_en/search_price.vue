@@ -1,157 +1,171 @@
 <template>
-  <view>
-		<view class="form-container">
-			<u--form
-					class="form-container-total"
-					labelPosition="left"
-					:model="model1"
-					:rules="rules"
-					labelWidth="90"
-					ref="uForm"
-			>
-				<u-form-item
-					label="目的地"
-					prop="expressInfo.destination"
-					class="custom-width container"
-					ref="item1"
+	<view>
+		<Navigator />
+		<view class="search_price_container">
+			<view class="form-container">
+				<view class="search_price_title"><span class="search_price_home" @click="goHome">{{$t('index.home_page')}}</span> / <span class="search_price_title_blue">{{$t('index.search_price')}} </span></view>
+				<view class="form-container_upper">
+					<u--form
+						class="form-container-total"
+						labelPosition="left"
+						:model="model1"
+						:rules="rules"
+						labelWidth="90"
+						:labelStyle="labelStyle"
+						ref="uForm"
 				>
-					<u--input
-						v-model="model1.expressInfo.destination"
-						border="surround"
-						class="search-input"
-					  placeholder="请输入国家中文/英文名称/二字码"
-						@focus="showDropdown = true"
-					  @change="destinationChange"
-						@blur="hideDropdown"
+					<u-form-item
+						:label="$t('searchprice.destination')" 
+						prop="expressInfo.destination"
+						class="destination-container"
+						ref="item1"
 					>
-					</u--input>
-					<view v-if="showDropdown" class="dropdown">
-						<view
-							v-for="(item, index) in history"
-							:key="index"
-							@click="selectHistory(item)"
-							class="dropdown-item"
+						<u--input
+							v-model="model1.expressInfo.destination"
+							border="surround"
+							class="search-input"
+							placeholder="请输入国家中文/英文名称/二字码"
+							@focus="showDropdown = true"
+							@change="destinationChange"
+							@blur="hideDropdown"
 						>
-							{{ item.countryName }}
+						</u--input>
+						<view v-if="showDropdown" class="dropdown">
+							<view
+								v-for="(item, index) in history"
+								:key="index"
+								@click="selectHistory(item)"
+								class="dropdown-item"
+							>
+								{{ item.countryName }}
+							</view>
+						</view>
+					</u-form-item>
+					<u-form-item
+					  :label="$t('searchprice.weight')" 
+						prop="expressInfo.weight"
+						ref="item1"
+						class="custom-width"
+					>
+						<u--input
+							v-model="model1.expressInfo.weight"
+							type="number"
+						    class="search-input"
+							border="surround"
+						>
+							<template #suffix>
+								<text>KG</text>
+							</template>
+						</u--input>
+					</u-form-item>
+					<u-form-item
+					  :label="$t('searchprice.length')" 
+						prop="expressInfo.length"
+						ref="item1"
+					>
+						<u--input
+							v-model="model1.expressInfo.length"
+							type="number"
+						  class="search-input search-input_short"
+							border="surround"
+						>
+							<template #suffix>
+								<text>CM</text>
+							</template>
+						</u--input>
+					</u-form-item>
+					<u-form-item
+					  :label="$t('searchprice.width')" 
+						prop="expressInfo.width"
+						ref="item1"
+					>
+						<u--input
+							v-model="model1.expressInfo.width"
+							type="number"
+						  class="search-input search-input_short"
+							border="surround"
+						>
+							<template #suffix>
+								<text>CM</text>
+							</template>
+						</u--input>
+					</u-form-item>
+					<u-form-item
+					  :label="$t('searchprice.height')" 
+						prop="expressInfo.height"
+						ref="item1"
+					>
+						<u--input
+							v-model="model1.expressInfo.height"
+							type="number"
+						  class="search-input search-input_short"
+							border="surround"
+						>
+							<template #suffix>
+								<text>CM</text>
+							</template>
+						</u--input>
+					</u-form-item>
+				</u--form>
+				<u-button @click="submit" class="search_price_button">{{$t('index.search_price')}}</u-button>
+				</view>
+
+			</view>
+
+			<view v-if="isLoading" class="loading-container">
+				<u-loading-icon></u-loading-icon>
+			</view>
+			<view v-else-if="hasResult" class="table-container form-container_down">
+				<view v-if="this.priceData.length" class="table">
+					<view  class="table-header">
+						<view class="table-row">
+							<view class="table-cell">{{$t('index.channel')}}</view>
+							<view class="table-cell">{{$t('index.estimated_freight')}}</view>
+							<view class="table-cell">{{$t('index.trans_time')}}</view>
+							<view class="table-cell">{{$t('index.available_goods')}}</view>
 						</view>
 					</view>
-				</u-form-item>
-				<u-form-item
-					label="货品总重量"
-					prop="expressInfo.weight"
-					ref="item1"
-					class="custom-width"
-				>
-					<u--input
-						v-model="model1.expressInfo.weight"
-						type="number"
-						border="surround"
-					>
-						<template #suffix>
-							<text>KG</text>
-						</template>
-					</u--input>
-				</u-form-item>
-				<u-form-item
-					label="货品长度"
-					prop="expressInfo.length"
-					ref="item1"
-				>
-					<u--input
-						v-model="model1.expressInfo.length"
-						type="number"
-						border="surround"
-					>
-						<template #suffix>
-							<text>CM</text>
-						</template>
-					</u--input>
-				</u-form-item>
-				<u-form-item
-					label="货品宽度"
-					prop="expressInfo.width"
-					ref="item1"
-				>
-					<u--input
-						v-model="model1.expressInfo.width"
-						type="number"
-						border="surround"
-					>
-						<template #suffix>
-							<text>CM</text>
-						</template>
-					</u--input>
-				</u-form-item>
-				<u-form-item
-					label="货品高度"
-					prop="expressInfo.height"
-					ref="item1"
-				>
-					<u--input
-						v-model="model1.expressInfo.height"
-						type="number"
-						border="surround"
-					>
-						<template #suffix>
-							<text>CM</text>
-						</template>
-					</u--input>
-				</u-form-item>
-			</u--form>
-			<u-button @click="submit">提交</u-button>
-		</view>
-
-		<view v-if="isLoading">
-				loading<u-loading-icon></u-loading-icon>
-		</view>
-		<view v-else-if="hasResult" class="table-container">
-			<view v-if="this.priceData.length" class="table">
-				<view  class="table-header">
-					<view class="table-row">
-						<view class="table-cell">渠道名</view>
-						<view class="table-cell">预估运费</view>
-						<view class="table-cell">运输时效</view>
-						<view class="table-cell">可走货物</view>
-						<view class="table-cell">重量</view>
+					<view class="table-body">
+						<view class="table-row" v-for="(item, index) in priceData" :key="index">
+							<view class="table-cell">{{ item.channelName }}</view>
+							<view class="table-cell">{{ item.feeAmt }}</view>
+							<view class="table-cell">{{ item.sendtime }}</view>
+							<view class="table-cell">{{ item.productName }}</view>
+						</view>
+						
 					</view>
 				</view>
-				<view class="table-body">
-					<view class="table-row" v-for="(item, index) in priceData" :key="index">
-						<view class="table-cell">{{ item.channelName }}</view>
-						<view class="table-cell">{{ item.feeAmt }}</view>
-						<view class="table-cell">{{ item.sendtime }}</view>
-						<view class="table-cell">{{ item.productName }}</view>
-						<view class="table-cell">{{item.weight}}</view>
-					</view>
-					
+				<view class="empty_container" v-else>
+					{{$t('searchprice.no_data')}}
 				</view>
 			</view>
-			<view v-else>
-				暂无相关数据
-			</view>
 		</view>
-	</view>
+		<Footer></Footer>
+  </view>
 	
 </template>
 
 <script>
 import country from './country.js';
+import Navigator from '../component/Navigation.vue';
+import Footer from '../component/Footer.vue';
 
-
-console.log(country)
 const defaultHistory = [{
-	countryName: '美国(United States)',
+	countryName: '美国',
 	countryCode: 'US'
 }, {
-	countryName: '加拿大(Canada)',
+	countryName: '加拿大',
 	countryCode: 'CA'
 }, {
-	countryName: '墨西哥(Mexico)',
+	countryName: '墨西哥',
 	countryCode: 'MX'
 }];
 export default {
+	components: {
+		Footer,
+		Navigator
+	},
   data() {
-
     return {
 			value: '',
 			model1: {
@@ -168,6 +182,9 @@ export default {
 			priceData: [],
 			showDropdown: false,
 			history: defaultHistory,
+			labelStyle: {
+				color: '#666666', // 标签文字颜色
+			},
 			rules: {
 				'expressInfo.destination': {
 					type: 'string',
@@ -203,6 +220,11 @@ export default {
 	  change(e) {
 			console.log('change', e);
 		},
+		goHome() {
+			uni.reLaunch({
+				url: '/' // 替换为您的首页路径
+			});
+		},
 		destinationChange(e) {
 			console.log('change', e);
 			if(!e) {
@@ -231,7 +253,7 @@ export default {
 			}, 200);
 		},
 		selectHistory(item) {
-			// this.model1.expressInfo.destination = item.countryRealName; // 设置输入框的值为选中的历史记录
+			this.model1.expressInfo.destination = item.countryName; // 设置输入框的值为选中的历史记录
 			this.showDropdown = false; // 隐藏下拉框
 		},
 		submit() {
@@ -256,7 +278,7 @@ export default {
 				})
 				const a = countryCode.country_code;
 
-        if(a) {
+                if(a) {
 					uni.request({
 						url: '/api/PostInterfaceService?method=searchPrice',
 						method: 'POST',
@@ -311,42 +333,73 @@ export default {
 				} else {
 					uni.$u.toast('不存在当前国家')
 				}
-		
 		    
 			}).catch(errors => {
+				this.isLoading = false;
+				this.hasResult = true;
 				uni.$u.toast('校验失败')
 			})
 		},
-    handleSubmit(e) {
-      e.preventDefault();
-      console.log('提交的数据:', this.formData);
-      // 这里可以添加发送数据到服务器的代码
-      uni.showToast({
-        title: '提交成功',
-        icon: 'success'
-      });
-    }
+		handleSubmit(e) {
+		  e.preventDefault();
+		  console.log('提交的数据:', this.formData);
+		  // 这里可以添加发送数据到服务器的代码
+		  uni.showToast({
+			title: '提交成功',
+			icon: 'success'
+		  });
+		}
   }
 }
 </script>
 
-<style scoped>
+<style lang="less" >
+@bg-color: #F5F5F5;
+@primary-color: #006FF0;
+
+.u-form-item__body__left__content__label {
+	color: red;
+}
+.search_price_title {
+	font-weight: 400;
+	font-size: 17px;
+	color: rgba(153,153,153,0.88);
+	padding-top: 40px;
+	margin-bottom: 20px;
+ }
+ .search_price_title_blue {
+	color: @primary-color;
+	padding-left: 10px;
+ }
+ .form-container_upper {
+		background: white;
+		border-radius: 4px;
+		padding: 15px 30px;
+ }
+.search_price_container {
+	background: @bg-color;
+	margin-top: 60px;
+	min-height: calc(100vh - 310px);
+}
 .form-container-total {
 	display: flex;
 	flex-wrap: wrap;
+	margin-top: 5px;
+	justify-content: space-between
 }
 .form-container {
 	width: 100%;
 	max-width: 992px;
-	margin: 25px auto;
+	margin: 0 auto;
 	font-size: 12px;
-	min-height: calc(100vh - 450px);
 }
 .container {
   padding: 20px;
 }
-.u-form-item__body__left {
-	width: 100px;
+
+.empty_container {
+	text-align: center;
+	color: gray;
 }
 .custom-width {
 		flex: 0 0 auto;
@@ -361,10 +414,13 @@ export default {
   border-collapse: collapse;
 	margin: 0 auto;
 	max-width: 992px;
+	padding: 30px;
+	box-sizing: border-box;
+	background: white;
 }
 
 .table-header {
-  background-color: #f2f2f2;
+  background-color: #FAFAFA;
 }
 
 .table-row {
@@ -374,8 +430,8 @@ export default {
 .table-cell {
   flex: 1;
   padding: 10px;
-  border: 1px solid #ddd;
   text-align: center;
+	border-bottom: 1px solid #ddd;
 }
 .container {
   position: relative;
@@ -383,21 +439,27 @@ export default {
 }
 
 .search-input {
-  width: 100%;
+  width: 300px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  background: #fafafa;
+}
+.search-input_short {
+  width: 150px;
 }
 
 .dropdown {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 90px;
   right: 0;
   background: white;
   border: 1px solid #ccc;
   border-radius: 4px;
   z-index: 10;
+	-height: 300px;
+	overflow-y: scroll;
 }
 
 .dropdown-item {
@@ -407,5 +469,33 @@ export default {
 
 .dropdown-item:hover {
   background: #f0f0f0;
+	
+}
+.search_price_button {
+	width: 30%;
+	height: 45px;
+	color: white;
+	background: linear-gradient(270deg, #006FF0 0%, #7AB8FF 100%);
+	margin-top: 30px;
+	&:hover {
+		transition: .16s;
+    transform: scale(1.02, 1.06);
+	}
+	&:focus {
+		transition: .16s;
+    transform: scale(1.02, 1.06);
+	}
+}
+.loading-container {
+	height: 400px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.destination-container {
+	position: relative;
+}
+.search_price_home {
+	cursor: pointer;
 }
 </style>

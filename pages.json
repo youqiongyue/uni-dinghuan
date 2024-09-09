@@ -41,6 +41,24 @@
 			}
 		},
 		{
+			"path": "pages/index_es/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},  {
+			"path": "pages/index_es/search_price",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/index_es/search_track",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/component/component",
 			"style": {
 				"navigationBarTitleText": "%index.component%",

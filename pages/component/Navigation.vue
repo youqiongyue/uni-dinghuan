@@ -7,38 +7,50 @@
 							<img src="../../static/dh_logo.png" width="100%" height="100%" class="fxg-header__logo" alt="dh商标">
 						</span></a>
 					</view>
-					<view class="nav_item">首页</view>
-					<view class="nav_item">关于鼎环</view>
-					<view class="nav_item">服务项目</view>
-					<view class="nav_item">客服中心</view>
-					<view class="nav_item">新闻中心</view>
-					<view class="nav_item">常见问题</view>
-					<view class="nav_item">人才招聘</view>
-					<view class="nav_item">联系我们</view>
+					<view class="nav_item">{{$t('index.home_page')}}</view>
+					<view class="nav_item">{{$t('index.about')}}</view>
+					<view class="nav_item">{{$t('index.serve_items')}}</view>
+					<view class="nav_item">{{$t('index.serve_center')}}</view>
+					<view class="nav_item">{{$t('index.news_center')}}</view>
+					<view class="nav_item">{{$t('index.common_question')}}</view>
+					<view class="nav_item">{{$t('index.recruitment')}}</view>
+					<view class="nav_item">{{$t('index.contact_us')}}</view>
 				</view>
 				<view  class="fxg-nav_right">
-					<a @click="switchToChinese">中文 </a>
+					<a @click="changeLang('zh-Hans')">{{$t('locale.zh-hans')}}</a>
 					<span> | </span>
-					<a @click="changeLang"> English </a>
+					<a @click="changeLang('en')">{{$t('locale.en')}} </a>
 					<span> | </span>
-					<a> Español</a>
+					<a @click="changeLang('es')">{{$t('locale.es')}}</a>
 				</view>
 			</nav>
 		</header>
 </template>
 
 <script>
-	export default {
-	  props: {
-	    title: {
-	      type: String,
-	      default: '标题'
-	    }
-	  },
-	  methods: {
-
-	  }
+const routes = {
+	'zh-Hans': '/pages/index/index',
+	'en': '/pages/index_en/index',
+	'es': '/pages/index_es/index'
+};
+export default {
+	props: {
+		title: {
+			type: String,
+			default: '标题'
+		}
+	},
+	methods: {
+		changeLang(lang) {
+			console.log('Changing language to:', lang, 'Route:', routes[lang]);
+			uni.setLocale(lang);
+			this.$i18n.locale = lang;
+			uni.navigateTo({ 
+				url: routes[lang]
+			});
+		},
 	}
+}
 </script>
 
 <style lang="less">
