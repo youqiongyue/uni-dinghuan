@@ -23,6 +23,13 @@
 			}
 		},
 		{
+			"path": "pages/index/about_us",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/index_en/index",
 			"style": {
 				"navigationStyle": "custom"

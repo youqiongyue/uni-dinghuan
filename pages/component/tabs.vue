@@ -115,6 +115,7 @@ export default {
 
 <style scoped lang="less">
 @primary-color: #006FF0;
+@hover-color: #3c9cff;
 .tabs-container {}
 .tabs-header-default {
   display: flex;

@@ -118,15 +118,12 @@
 								:key="index"
 								class="swiper-item_child"
 							>
-								<view
-									class="swiper-item uni-bg-red"
+							  <view
+									class="swiper-item"
 									v-for="(item, imgIndex) in group"
 									:key="imgIndex"
-									:style="{ 
-										background: 'url(' + item.bg + ') no-repeat',
-										backgroundSize: 'contain'
-									}"
 								> 
+								  <img :showLoading="true" :src="item.bg" width="100%" height="100%"></img>
 								  <view class="swiper-item_country">
 										<img class="swiper-item_country_img" src="../../static/us.png"></img>
 										<view class="swiper-item_country_name">美国</view>
@@ -138,21 +135,8 @@
 				
 									<!-- 你可以在这里添加其他内容，比如标题或描述 -->
 								</view>
+		
 							</swiper-item>
-							<!-- <swiper-item class="swiper-item_child">
-								<view class="swiper-item uni-bg-red">
-	
-								</view>
-								<view class="swiper-item uni-bg-red">A</view>
-								<view class="swiper-item uni-bg-red">A</view>
-								<view class="swiper-item uni-bg-red">A</view>
-							</swiper-item>
-							<swiper-item>
-								<view class="swiper-item uni-bg-green">B</view>
-							</swiper-item>
-							<swiper-item>
-								<view class="swiper-item uni-bg-blue">C</view>
-							</swiper-item> -->
 						</swiper>
 						<view class="special_to_right"  @click="toRight">
 							<img src="../../static/right_icon.png" width="25px" height="25px"></img>
@@ -471,18 +455,18 @@
 			</view>
 			<view class="cor_container_img_container">
 				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/ara.jpg" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/dhl.jpg" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/ems.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.jpg" width="200px" height="120px"></u--image>
 			</view>
-			<view class="cor_container_img_container">
+			<!-- <view class="cor_container_img_container">
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/tnt.jpg" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/ups.jpg" width="200px" height="120px"></u--image>
 				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
 				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
 				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
-			</view>
+			</view> -->
 		</view>
 
 		<Footer></Footer>
@@ -703,8 +687,10 @@ import Footer from '../component/Footer.vue';
     color: #fff;
     font-weight: 300;
     margin: 10px 10px;
-    width: 258px;
     justify-content: space-between;
+		position:absolute;
+		top: 0;
+		width: 90%;
 	}
 	.swiper-item_price_detail {
 		font-size: 26px;
@@ -719,10 +705,16 @@ import Footer from '../component/Footer.vue';
 		color: #FFFFFF;
 		font-weight: 300;
     justify-content: space-between;
-    margin: 10px 10px;
+    // margin: 10px 10px;
     margin-top: 80px;
 		align-items: center;
 		width: 258px;
+		position:absolute;
+		bottom: 10px;
+    width: 90%;
+		margin-left: 10px;
+		margin-right: 10px;
+	
 	}
 	.express_search_price_container {
 		display: flex;
@@ -763,6 +755,7 @@ import Footer from '../component/Footer.vue';
 		text-align: center;
 		flex: 1;
 		margin: 10px;
+		position: relative;
 	}
 	.info {
 		position: absolute;

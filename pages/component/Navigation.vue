@@ -3,13 +3,13 @@
       <nav class="fxg-nav">
 				<view class="fxg-nav_left">
 				  <view>
-						<a class="fxg-header__logo_wrapper fxg-keyboard" href="https://dhcargo.com.cn" target="_self" data-analytics="FDX Logo | Home" onclick="FDX.DTM.pushLinkInfo(this)" aria-label="鼎环物流商标"><span class="fxg-mouse" tabindex="-1">
+						<a class="fxg-header__logo_wrapper fxg-keyboard" href="/" target="_self" data-analytics="FDX Logo | Home" onclick="FDX.DTM.pushLinkInfo(this)" aria-label="鼎环物流商标"><span class="fxg-mouse" tabindex="-1">
 							<img src="../../static/dh_logo.png" width="100%" height="100%" class="fxg-header__logo" alt="dh商标">
 						</span></a>
 					</view>
-					<view class="nav_item">{{$t('index.home_page')}}</view>
-					<view class="nav_item">{{$t('index.about')}}</view>
-					<view class="nav_item">{{$t('index.serve_items')}}</view>
+					<view class="nav_item" @click="gotoPage('index')">{{$t('index.home_page')}}</view>
+					<view class="nav_item" @click="gotoPage('about_us')">{{$t('index.about')}}</view>
+					<view class="nav_item" >{{$t('index.serve_items')}}</view>
 					<view class="nav_item">{{$t('index.serve_center')}}</view>
 					<view class="nav_item">{{$t('index.news_center')}}</view>
 					<view class="nav_item">{{$t('index.common_question')}}</view>
@@ -33,6 +33,11 @@ const routes = {
 	'en': '/pages/index_en/index',
 	'es': '/pages/index_es/index'
 };
+const objLang = {
+	'zh-Hans': 'index',
+	'en': 'index_en',
+	'es': 'index_es'
+}
 export default {
 	props: {
 		title: {
@@ -49,12 +54,22 @@ export default {
 				url: routes[lang]
 			});
 		},
+		gotoPage(item) {
+			const lang = this.$i18n.locale;
+			const routes = `/pages/${objLang[lang]}/${item}`;
+			console.log(routes)
+			uni.navigateTo({ 
+				url: routes
+			});
+
+		}
 	}
 }
 </script>
 
 <style lang="less">
   @primary-color: #006FF0;
+	@hover-color: #3c9cff;
   .fxg-header--sticky {
 		z-index: 11000;
     position: fixed;
@@ -87,5 +102,9 @@ export default {
   .nav_item {
 		flex: 1;
 		text-align: center;
+		&:hover {
+			background: @hover-color;
+			height: 55px;
+		}
 	}
 </style>	
