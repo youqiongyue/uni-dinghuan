@@ -69,5 +69,10 @@
 	"searchprice.available_goods": "可走货物",
 	"searchprice.no_data": "暂无相关数据",
 	"searchtrack.no_data": "无单号信息，请重新输入",
-	"searchtrack.current_arrival": "当前到达"
+	"searchtrack.current_arrival": "当前到达",
+	"about.company_one": "鼎环国际物流于2006年成立于广州，2010年进驻深圳，佛山，是经国家相关部门批准专业国际物流公司。经过十多年的沉淀和发展，鼎环国际已经发展成为了一家专业提供国际仓储与国际物流服务、整合跨国电子商务物流服务商。",
+  "about.company_two": "我们专注于亚马逊FBA头程运输，全球快递、全球空运、全球海运等，业务遍布海内外，现有国内多地中转仓16000余平方，分布在广州、深圳、佛山等多个网点。拥有美国、加拿大、墨西哥、日本、欧洲多家海外分支机构，共有海外仓20000余平方。",
+	"about.company_three": "公司愿景：致力成为全球优质的国际物流解决方案提供商，打造一流的出海物流服务平台",
+	"about.company_four": "经营理念：客户至上、以人为本、致力创新、合作共赢",
+	"about.company_five": "服务理念：诚信主导，务实高效，创新致远"
 }

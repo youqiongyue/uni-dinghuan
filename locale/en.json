@@ -69,5 +69,10 @@
 	"searchprice.available_goods": "Available goods",
 	"searchprice.no_data": "No relevant data",
   "searchtrack.no_data": "No tracking number information, please re-enter",
-  "searchtrack.current_arrival": "current arrival"
+  "searchtrack.current_arrival": "current arrival",
+  "about.company_one": "Dinghuan International Logistics was established in Guangzhou in 2006 and entered Shenzhen and Foshan in 2010. It is a professional international logistics company approved by relevant national departments. After more than ten years of precipitation and development, Dinghuan International has developed into a professional international warehousing and international logistics service provider integrating transnational e-commerce logistics service providers.",
+  "about.company_two": "We focus on Amazon FBA first-leg transportation, global express delivery, global air transportation, global shipping, etc. Our business is spread all over the world. We currently have more than 16,000 square meters of transit warehouses in many places in China, distributed in Guangzhou, Shenzhen, Foshan and other outlets. It has many overseas branches in the United States, Canada, Mexico, Japan, and Europe, with a total of more than 20,000 square meters of overseas warehouses.",
+	"about.company_three": "Company vision: Strive to become a global high-quality international logistics solution provider and create a first-class overseas logistics service platform",
+	"about.company_four": "Business philosophy: Customer first, people-oriented, committed to innovation, win-win cooperation",
+	"about.company_five": "Service philosophy: Integrity-oriented, pragmatic and efficient, innovation and far-reaching"
 }

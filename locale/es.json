@@ -69,5 +69,10 @@
 	"searchprice.available_goods": "Bienes disponibles",
 	"searchprice.no_data": "Sin datos relevantes",
   "searchtrack.no_data": "No hay información del número de seguimiento, vuelva a ingresar",
-  "searchtrack.current_arrival": "llegada actual"
+  "searchtrack.current_arrival": "llegada actual",
+	"about.company_one": "Dinghuan International Logistics se estableció en Guangzhou en 2006 y entró en Shenzhen y Foshan en 2010. Es una empresa de logística internacional profesional aprobada por los departamentos nacionales pertinentes. Después de más de diez años de precipitación y desarrollo, Dinghuan International se ha convertido en un proveedor de servicios de almacenamiento y logística internacional profesional que integra a los proveedores de servicios logísticos de comercio electrónico transnacionales.",
+  "about.company_two": "Nos centramos en el transporte de ida y vuelta de Amazon FBA, la entrega urgente global, el transporte aéreo global, el transporte marítimo global, etc. Nuestro negocio cubre los mercados nacionales y extranjeros. Actualmente contamos con más de 16.000 metros cuadrados de almacenes de tránsito nacionales distribuidos en múltiples puntos de venta, como. Cantón, Shenzhen y Foshán. Tiene muchas sucursales en el extranjero en Estados Unidos, Canadá, México, Japón y Europa, con un almacén total en el extranjero de más de 20.000 metros cuadrados.",
+	"about.company_three": "Visión de la empresa: Comprometidos a convertirse en un proveedor global de soluciones logísticas internacionales de alta calidad y a crear una plataforma de servicios logísticos en el extranjero de primera clase.",
+	"about.company_four": "Filosofía empresarial: el cliente primero, orientado a las personas, comprometido con la innovación, cooperación beneficiosa para todos",
+	"about.company_five": "Concepto de servicio: basado en la integridad, pragmático y eficiente, innovador y de gran alcance."
 }
