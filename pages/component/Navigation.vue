@@ -17,11 +17,11 @@
 					<view class="nav_item">{{$t('index.contact_us')}}</view>
 				</view>
 				<view  class="fxg-nav_right">
-					<a @click="changeLang('zh-Hans')">{{$t('locale.zh-hans')}}</a>
+					<a class="fxg-nav_right_a" @click="changeLang('zh-Hans')">{{$t('locale.zh-hans')}}</a>
 					<span> | </span>
-					<a @click="changeLang('en')">{{$t('locale.en')}} </a>
+					<a class="fxg-nav_right_a" @click="changeLang('en')">{{$t('locale.en')}} </a>
 					<span> | </span>
-					<a @click="changeLang('es')">{{$t('locale.es')}}</a>
+					<a class="fxg-nav_right_a" @click="changeLang('es')">{{$t('locale.es')}}</a>
 				</view>
 			</nav>
 		</header>
@@ -94,6 +94,9 @@ export default {
 		display: flex;
     width: 80%;
 	}
+	.fxg-nav_right_a:hover {
+		text-decoration: underline;
+	}
 	.fxg-header__logo {
 		width: 60px;
 		height: 40px;
@@ -103,8 +106,9 @@ export default {
 		flex: 1;
 		text-align: center;
 		&:hover {
-			background: @hover-color;
+			// background: @hover-color;
 			height: 55px;
+			text-decoration: underline;
 		}
 	}
 </style>	

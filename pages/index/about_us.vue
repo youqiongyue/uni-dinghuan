@@ -2,22 +2,22 @@
   <view>
     <Navigator />
     <view class="about_us_container">
-      <h1 class="about_us_h1_title">关于鼎环</h1>
+      <h1 class="about_us_h1_title">{{$t('index.about')}}</h1>
       <view class="about_us_detail">
         <view class="about_us_left">
           <view class="about_us_desc">
             <u--image :showLoading="true" src="../../static/feight_logo.png" width="100px" height="100px" class="feight_logo"></u--image>
             <view class="about_us_title">
-              始创于2006年的
+              {{$t('about.company_title_one')}}
             </view>
             <view class="about_us_title">
-              跨境电商全球配送服务商
+              {{$t('about.company_title_two')}}
             </view>
             <view class="about_us_wording">
-              鼎环国际物流于2006年成立于广州，2010年进驻深圳，佛山，是经国家相关部门批准专业国际物流公司。经过十多年的沉淀和发展，鼎环国际已经发展成为了一家专业提供国际仓储与国际物流服务、整合跨国电子商务物流服务商。
+              {{$t('about.company_one')}}
             </view>
             <view class="about_us_wording">
-              我们专注于亚马逊FBA头程运输，全球快递、全球空运、全球海运等，业务遍布海内外，现有国内多地中转仓16000余平方，分布在广州、深圳、佛山等多个网点。拥有美国、加拿大、墨西哥、日本、欧洲多家海外分支机构，共有海外仓20000余平方。
+              {{$t('about.company_two')}}
             </view>
            
           </view>
@@ -36,19 +36,19 @@
           <view class="about_us_desc">
             <u--image :showLoading="true" src="../../static/feight_logo.png" width="100px" height="100px" class="feight_logo"></u--image>
             <view class="about_us_title about_us_title_blue">
-              致力于为跨境电商
+              {{$t('about.company_title_three')}}
             </view>
             <view class="about_us_title about_us_title_blue">
-              提供全球物流的专业解决方案
+              {{$t('about.company_title_four')}}
             </view>
             <view class="about_us_wording">
-              公司愿景：致力成为全球优质的国际物流解决方案提供商，打造一流的出海物流服务平台
+              {{$t('about.company_three')}}
             </view>
             <view class="about_us_wording">
-              经营理念：客户至上、以人为本、致力创新、合作共赢
+              {{$t('about.company_four')}}
             </view>
             <view class="about_us_wording">
-              服务理念：诚信主导，务实高效，创新致远
+              {{$t('about.company_five')}}
             </view>
    
           </view>
