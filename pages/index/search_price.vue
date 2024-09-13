@@ -119,10 +119,10 @@
 				<view v-if="this.priceData.length" class="table">
 					<view  class="table-header">
 						<view class="table-row">
-							<view class="table-cell">{{$t('index.channel')}}</view>
-							<view class="table-cell">{{$t('index.estimated_freight')}}</view>
-							<view class="table-cell">{{$t('index.trans_time')}}</view>
-							<view class="table-cell">{{$t('index.available_goods')}}</view>
+							<view class="table-cell">{{$t('searchprice.channel')}}</view>
+							<view class="table-cell">{{$t('searchprice.estimated_freight')}}</view>
+							<view class="table-cell">{{$t('searchprice.trans_time')}}</view>
+							<view class="table-cell">{{$t('searchprice.available_goods')}}</view>
 						</view>
 					</view>
 					<view class="table-body">
@@ -151,13 +151,13 @@ import Navigator from '../component/Navigation.vue';
 import Footer from '../component/Footer.vue';
 
 const defaultHistory = [{
-	countryName: '美国',
+	countryName: '美国 Unite State',
 	countryCode: 'US'
 }, {
-	countryName: '加拿大',
+	countryName: '加拿大 Canada',
 	countryCode: 'CA'
 }, {
-	countryName: '墨西哥',
+	countryName: '墨西哥 Mexico',
 	countryCode: 'MX'
 }];
 export default {
@@ -238,7 +238,7 @@ export default {
 			})
 			this.history = result.map(item => {
 				return {
-					countryName: item.chinese_name + (item.english_name),
+					countryName: item.chinese_name + ' ' + (item.english_name),
 					countryCode: item.country_code,
 					countryRealName: item.chinese_name
 				}
@@ -272,9 +272,9 @@ export default {
 				} = this.model1.expressInfo;
 				// 注意最终一定要显示的是二字码
 				console.log(destination)
-			
+			  const chinese_name = destination.split(' ')[0];
 				let countryCode = country.find(item => {
-					return item.chinese_name === destination || item.english_name.toLowerCase() === destination.toLowerCase() || item.country_code.toLowerCase() ===  destination.toLowerCase()
+					return item.chinese_name === chinese_name;
 				})
 				const a = countryCode.country_code;
 

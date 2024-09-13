@@ -125,11 +125,12 @@
 								> 
 								  <img :showLoading="true" :src="item.bg" width="100%" height="100%"></img>
 								  <view class="swiper-item_country">
-										<img class="swiper-item_country_img" src="../../static/us.png"></img>
-										<view class="swiper-item_country_name">美国</view>
+										<!-- <img class="swiper-item_country_img" src="../../static/us.png"></img> -->
+										<svg-icon class="swiper-item_country_img" :src="item.svg" width="35px" height="30px"/>
+										<view class="swiper-item_country_name">{{item.country}}</view>
 									</view>
 									<view class="swiper-item_price">
-										<view class="swiper-item_price_num">￥ <span class="swiper-item_price_detail"> 9.72</span> <span>/kg</span></view>
+										<view class="swiper-item_price_num">￥ <span class="swiper-item_price_detail"> {{item.price}}</span> <span>/kg</span></view>
                     <view class="swiper-item_price_kg">99kg 起</view>
 									</view>
 				
@@ -499,13 +500,15 @@ import Navigator from '../component/Navigation.vue';
 import Tabs from '../component/tabs.vue';
 import Tab from '../component/tab.vue';
 import Footer from '../component/Footer.vue';
+import SvgIcon from '../component/SvgIcon.vue';
 
   export default {
 		components: {
 				Tabs,
 				Tab,
 				Footer,
-				Navigator
+				Navigator,
+				SvgIcon
 		},
     data() {
 			uni.setLocale('zh-Hans');
@@ -536,43 +539,59 @@ import Footer from '../component/Footer.vue';
 				],
 				specialPrice: [
 					{
-						'price': 9.72,
+						'price': 8.10,
+						'country': '美国',
 						'num': 99,
+						'svg': "../../static/us.svg",
 						'bg': '../../static/price_one.png'
 					},
 					{
-						'price': 9.72,
+						'price': 9.30,
+						'country': '加拿大',
 						'num': 99,
+						'svg': '../../static/ca.svg',
 						'bg': '../../static/price_two.png'
 					},
 					{
-						'price': 9.72,
+						'price': 27.00,
 						'num': 99,
+						'country': '墨西哥',
+						'svg': '../../static/mx.svg',
 						'bg': '../../static/price_three.png'
 					},
 					{
-						'price': 9.72,
+						'price': 9.50,
 						'num': 99,
-						'bg': '../../static/price_four.png'
+						'country': '德国',
+						'svg': '../../static/de.svg',
+						'bg':  '../../static/price_four.png'
 					},
 					{
-						'price': 9.72,
+						'price': 11.00,
 						'num': 99,
+						'country': '英国',
+						'svg': '../../static/gb.svg',
 						'bg': '../../static/price_one.png'
 					},
 					{
-						'price': 9.72,
+						'price': 11.50,
 						'num': 99,
+						'country': '法国',
+						'svg': '../../static/fr.svg',
 						'bg': '../../static/price_two.png'
 					},
 					{
-						'price': 9.72,
+						'price': 12.50,
 						'num': 99,
+						'country': '西班牙',
+						'svg': '../../static/es.svg',
 						'bg': '../../static/price_three.png'
 					},
 					{
-						'price': 9.72,
+						'price': 9.80,
 						'num': 99,
+						'country': '澳大利亚',
+						'svg': '../../static/au.svg',
 						'bg': '../../static/price_four.png'
 					}
 				],
