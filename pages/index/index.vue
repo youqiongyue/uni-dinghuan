@@ -378,17 +378,17 @@
 				<view class="news_item">
 					<img src="../../static/price_one.png" height="120px" class="news_item_img"/>
 					<view class="news_desc">
-						<view class="news_item_title">FBA空运操作流程的讲解FBA空运操作流程的讲解</view>
-						<view class="news_item_desc">FBA空运是一种重要的FBA运输方式，虽然它对货物尺寸和种类要求较高，其…</view>
-						<view class="news_item_date">2023 / 11 / 12</view>
+						<view class="news_item_title">出口加拿大注意：对涉华盘条作出反倾销终裁</view>
+						<view class="news_item_desc">2024年9月4日，加拿大边境服务署（CBSA）对原产于或进口自中国、埃及和越南的盘条（Wire Rod）作出反倾销肯定性终裁，裁定中...</view>
+						<view class="news_item_date">2024-09-13</view>
 					</view>
 				</view>
 				<view class="news_item">
 					<img src="../../static/price_one.png" height="120px" class="news_item_img"/>
 					<view class="news_desc">
-						<view class="news_item_title">FBA空运操作流程的讲解FBA空运操作流程的讲解</view>
-						<view class="news_item_desc">FBA空运是一种重要的FBA运输方式，虽然它对货物尺寸和种类要求较高，其…</view>
-						<view class="news_item_date">2023 / 11 / 12</view>
+						<view class="news_item_title">首个！汉莎货运航空将推出亚洲飞往美国的直飞服务</view>
+						<view class="news_item_desc">随着该地区市场需求持续激增，汉莎货运航空即将推出首个从亚洲飞往美国的直飞服务。该航空公司今天宣布将增加一条...</view>
+						<view class="news_item_date">2024-09-13</view>
 					</view>
 				</view>
 			</view>
@@ -396,17 +396,17 @@
 				<view class="news_item">
 					<img src="../../static/price_one.png" height="120px" class="news_item_img"/>
 					<view class="news_desc">
-						<view class="news_item_title">FBA空运操作流程的讲解FBA空运操作流程的讲解</view>
-						<view class="news_item_desc">FBA空运是一种重要的FBA运输方式，虽然它对货物尺寸和种类要求较高，其…</view>
-						<view class="news_item_date">2023 / 11 / 12</view>
+						<view class="news_item_title">为满足需求，DHL Express 增加第四季度高峰运力</view>
+						<view class="news_item_desc">DHL Express 正在投资超过 1 亿欧元用于运输和处理能力，以满足第四季度旺季的预期需求。该公司表示，2024年第四...</view>
+						<view class="news_item_date">2024-09-13</view>
 					</view>
 				</view>
 				<view class="news_item">
 					<img src="../../static/price_one.png" height="120px" class="news_item_img"/>
 					<view class="news_desc">
-						<view class="news_item_title">FBA空运操作流程的讲解FBA空运操作流程的讲解</view>
-						<view class="news_item_desc">FBA空运是一种重要的FBA运输方式，虽然它对货物尺寸和种类要求较高，其…</view>
-						<view class="news_item_date">2023 / 11 / 12</view>
+						<view class="news_item_title">巴西​​​​​​​更新进口食品化妆品行政处理程序要求</view>
+						<view class="news_item_desc">2024年9月3日，巴西国家卫生监督局（ANVISA）更新进口食品化妆品行政处理程序要求，新的处理程序涉及进口用于生产须接受...</view>
+						<view class="news_item_date">2024-09-13</view>
 					</view>
 				</view>
 			</view>
