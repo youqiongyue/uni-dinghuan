@@ -1,6 +1,8 @@
 import App from './App'
 import messages from './locale/index'
 
+console.log(11111)
+console.log(uni.getLocale())
 let i18nConfig = {
   locale: uni.getLocale(),
   messages
