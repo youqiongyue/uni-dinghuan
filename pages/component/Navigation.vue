@@ -24,6 +24,23 @@
 					<a class="fxg-nav_right_a" @click="changeLang('es')">{{$t('locale.es')}}</a>
 				</view>
 			</nav>
+			<nav class="fxg-nav-mini">
+				<view class="fxg-nav-mini-container">
+					<view class="fxg-nav_left">
+					<view>
+							<a class="fxg-header__logo_wrapper fxg-keyboard" href="/" target="_self" data-analytics="FDX Logo | Home" onclick="FDX.DTM.pushLinkInfo(this)" aria-label="鼎环物流商标"><span class="fxg-mouse" tabindex="-1">
+								<img src="../../static/dh_logo.png" width="100%" height="100%" class="fxg-header__logo" alt="dh商标">
+							</span></a>
+						</view>
+					</view>
+					<view class="fxg-nav_right">
+						<span></span>
+						<span></span>
+						<span></span>
+					</view>
+				</view>
+
+			</nav>
 		</header>
 </template>
 
@@ -70,6 +87,7 @@ export default {
 <style lang="less">
   @primary-color: #006FF0;
 	@hover-color: #3c9cff;
+
   .fxg-header--sticky {
 		z-index: 11000;
     position: fixed;
@@ -81,6 +99,9 @@ export default {
 		background: @primary-color;
 		box-shadow: 0px 1px 6px 2px rgba(211,211,211,0.24);
 	}
+	.fxg-nav-mini {
+
+	}
 	.fxg-nav {
 		display: flex;
 		width: 80%;
@@ -90,6 +111,30 @@ export default {
 		justify-content: space-between;
 		cursor: pointer;
 	}
+	.fxg-nav-mini {
+    z-index: 2018888;
+    display: none;
+    position: fixed !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+	}
+	.fxg-nav-mini {
+		.fxg-nav_right {
+		  width: 38px;
+			height: 38px;
+			span {
+				width: 100%;
+				height: 3px;
+				margin: 9px 0 !important;
+				background: #CCC;
+				display: inherit;
+				transition: .5s;
+			}
+		}
+	}
+
 	.fxg-nav_left {
 		display: flex;
     width: 80%;
@@ -109,6 +154,22 @@ export default {
 			// background: @hover-color;
 			height: 55px;
 			text-decoration: underline;
+		}
+	}
+	.fxg-nav-mini-container {
+		display: flex;
+    justify-content: space-between;
+    padding: 5px 25px;
+		cursor: pointer;
+	}
+
+	@media only screen and (max-width:1000px) { 
+		.fxg-nav {
+			display: none;
+		}
+		.fxg-nav-mini {
+			display: block;
+			width: 100%;
 		}
 	}
 </style>	

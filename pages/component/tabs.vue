@@ -200,4 +200,10 @@ export default {
     width: 30px;
     height: 30px;
 }
+@media only screen and (max-width:1000px) { 
+	.tabs-header {
+		max-width: 80%;
+	}
+}
+
 </style>

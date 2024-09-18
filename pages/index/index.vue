@@ -7,7 +7,7 @@
 			height="500"
 			circular
 			indicator
-			interval="5000"
+			interval="120000"
 			indicatorMode="line"
 			indicatorStyle="bottom: 80px"
 
@@ -214,8 +214,6 @@
 					<view class="service_item_title">{{$t('index.sea_dtd')}}</view>
 					<view class="service_item_desc">{{$t('index.sea_dtd_detail')}}</view>
 				</view>
-			</view>
-			<view class="service_item_container">
 				<view class="service_item">
 					<svg width="80px" height="80px" viewBox="0 0 140 140" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 					    <title>{{$t('index.sea_to_port')}}</title>
@@ -274,44 +272,9 @@
 					<view class="service_item_desc">{{$t('index.global_express_detail')}}</view>
 				</view>
 			</view>
-			
-			<!-- <Tabs :tabs="serviceTabs" :current.sync="currentTabService">
-				<Tab v-for="(tab, index) in tabs" :key="index" :index="index" :current="currentTabService">
-					<ul  class="fwxm-rigth-m" v-if="index === 0">				
-						<li class="">
-							<a href="/page/cn_service_view.asp?id=29">
-							<div class="fwxm-rigth-img"><img src="https://www.gzdhgj.com/ufile/202303202123111018.jpg" />
-							<div class="fwxm-rigth-icon fwxm-rigth-icon-1"></div>
-								<div class="fwxm-rigth-txt">
-									<div class="fwxm-rigth-txt-1">美国空运</div>
-									<p>美国空运是以美国各大机场为依托，通过货机或者可载货的客机运输货物到达美国，结合当地的经济、政策进行贸易交易，或其他合法操作的国际物流渠道。美国空运以其迅捷，安全，准时的超高效率赢得了相当大的市场，大大缩短了交货期</p>
-								</div>
-							</div>
-							</a>
-						</li>
-						<li class="">
-								<a href="/page/cn_service_view.asp?id=31">
-								<div class="fwxm-rigth-img"><img src="https://www.gzdhgj.com/ufile/202303202119426752.jpg">
-								<div class="fwxm-rigth-icon fwxm-rigth-icon-1"></div>
-								<div class="fwxm-rigth-txt"><div class="fwxm-rigth-txt-1">欧洲空运</div>
-								<p>欧洲空运专线是鼎环国际物流整合香港、深圳、广州飞往欧洲的空运物流渠道，并结合清关团队资源开发的欧洲DDP快递专线服，采用头程空运+末端多渠道派送方式</p>
-								</div>
-								</div>
-								</a>
-						</li>
-						<li class="">
-								<a href="/page/cn_service_view.asp?id=34">
-								<div class="fwxm-rigth-img"><img src="https://www.gzdhgj.com/ufile/202303202120591845.jpg">
-								<div class="fwxm-rigth-icon fwxm-rigth-icon-1"></div>
-								<div class="fwxm-rigth-txt"><div class="fwxm-rigth-txt-1">德国空运</div>
-								<p>德国空运专线是鼎环国际物流为跨境卖家提供的从深圳，广州，香港三大机场起飞，与多家多家航空公司合作，直飞德国的空运专线渠道（含德国包机专线服务），后端采用德国本土卡车、快递两种派送方式</p>
-								</div>
-								</div>
-								</a>
-						</li>
-					</ul>
-				</Tab>
-			</Tabs> -->
+			<!-- <view class="service_item_container">
+
+			</view> -->
 		</view>
 		
 		<!-- <view>
@@ -413,7 +376,7 @@
 			</view>
 			<view class="news_item_container">
 				<view class="news_item">
-					<img src="../../static/price_one.png" width="200px" height="120px" class="news_item_img"/>
+					<img src="../../static/price_one.png" height="120px" class="news_item_img"/>
 					<view class="news_desc">
 						<view class="news_item_title">FBA空运操作流程的讲解FBA空运操作流程的讲解</view>
 						<view class="news_item_desc">FBA空运是一种重要的FBA运输方式，虽然它对货物尺寸和种类要求较高，其…</view>
@@ -421,7 +384,7 @@
 					</view>
 				</view>
 				<view class="news_item">
-					<img src="../../static/price_one.png" width="200px" height="120px" class="news_item_img"/>
+					<img src="../../static/price_one.png" height="120px" class="news_item_img"/>
 					<view class="news_desc">
 						<view class="news_item_title">FBA空运操作流程的讲解FBA空运操作流程的讲解</view>
 						<view class="news_item_desc">FBA空运是一种重要的FBA运输方式，虽然它对货物尺寸和种类要求较高，其…</view>
@@ -431,7 +394,7 @@
 			</view>
 			<view class="news_item_container">
 				<view class="news_item">
-					<img src="../../static/price_one.png" width="200px" height="120px" class="news_item_img"/>
+					<img src="../../static/price_one.png" height="120px" class="news_item_img"/>
 					<view class="news_desc">
 						<view class="news_item_title">FBA空运操作流程的讲解FBA空运操作流程的讲解</view>
 						<view class="news_item_desc">FBA空运是一种重要的FBA运输方式，虽然它对货物尺寸和种类要求较高，其…</view>
@@ -439,7 +402,7 @@
 					</view>
 				</view>
 				<view class="news_item">
-					<img src="../../static/price_one.png" width="200px" height="120px" class="news_item_img"/>
+					<img src="../../static/price_one.png" height="120px" class="news_item_img"/>
 					<view class="news_desc">
 						<view class="news_item_title">FBA空运操作流程的讲解FBA空运操作流程的讲解</view>
 						<view class="news_item_desc">FBA空运是一种重要的FBA运输方式，虽然它对货物尺寸和种类要求较高，其…</view>
@@ -453,6 +416,9 @@
 			<view class="service_title cor_container_title">
 			  {{$t('index.partner')}}
 				<view class="service_title_down">COOPERATIVE PARTNER</view>
+			</view>
+			<view>
+				公司与DHL、UPS、FED、TNT、EMS、香港邮政等多家国际知名大型物流公司保持密切的合作关系
 			</view>
 			<view class="cor_container_img_container">
 				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
@@ -749,7 +715,7 @@ import SvgIcon from '../component/SvgIcon.vue';
 		width: 30px;
 		height: 30px;
 		position: absolute;
-    left: 15%;
+    left: 10%;
     top: 30%;
 		cursor: pointer;
 	}
@@ -757,13 +723,13 @@ import SvgIcon from '../component/SvgIcon.vue';
 		width: 30px;
 		height: 30px;
 		position: absolute;
-    right: 15%;
+    right: 10%;
     top: 30%;
 		cursor: pointer;
 	}
 	.swiper {
 		height: 180px;
-		width: 62%;
+		width: 70%;
 		margin: 0 auto;
 	}
 	.swiper-item_child {
@@ -897,6 +863,7 @@ import SvgIcon from '../component/SvgIcon.vue';
 		margin: 0 auto;
 		margin: 30px auto;
 		justify-content: center;
+		flex-wrap: wrap;
 	}
 	.service_item {
 		width: 33%;
@@ -960,6 +927,7 @@ import SvgIcon from '../component/SvgIcon.vue';
 	}
 	.news_desc {
 		padding-left: 15px;
+		padding-top: 5px;
 	}
 	.news_item {
 		width: 50%;
@@ -976,6 +944,13 @@ import SvgIcon from '../component/SvgIcon.vue';
 		font-weight: 400;
     font-size: 14px;
     color: #666666;
+		height: 40px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    line-height: 1.5;
 	}
 	.news_item_date {
 		margin-top: 10px;
@@ -1139,5 +1114,67 @@ import SvgIcon from '../component/SvgIcon.vue';
 		display: flex;
 		padding: 0 80px;
 		color: rgb(102, 102, 102)
+	}
+	@media only screen and (max-width:1000px) { 
+		.express_tab_container {
+			width: 90%;
+			left: 5%;
+		}
+		.tabs-header {
+			max-width: 80%;
+		}
+		.search-input {
+			width: 90%;
+		}
+		.swiper-item_child {
+			flex-wrap: wrap;
+		}
+		.swiper-item {
+			width: 48%;
+			margin: 0 auto;
+			height: 120px;
+			flex: none;
+		}
+		.swiper {
+			height: 300px;
+			width: 90%;
+		}
+		.service_item_container {
+			width: 90%;
+		}
+		.special_to_right {
+			right: 0%;
+			top: 40%;
+		}
+		.special_to_left {
+			left: 0%;
+			top: 40%;
+		}
+		.express_delivery {
+			margin-top: 0px
+		}
+		.about_us_desc {
+			width: 80%;
+		}
+		.service_item {
+			width: 50%;
+			margin-bottom: 20px;
+		}
+		.about_us_svg_container {
+			width: 80%;
+			margin: 10px auto;
+		}
+		.news_item_container {
+			width: 90%;
+			flex-wrap: wrap;
+		}
+		.news_item {
+			margin: 0;
+			margin-bottom: 20px;
+			width: 100%;
+		}
+		.news_item_img {
+			width: 45%;
+		}
 	}
 </style>
