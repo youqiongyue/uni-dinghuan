@@ -1,5 +1,5 @@
 <template>
-    <header class="fxg-header fxg-header--sticky">
+    <header class="fxg-header fxg-header--sticky" ref="header">
       <nav class="fxg-nav">
 				<view class="fxg-nav_left">
 				  <view>
@@ -24,7 +24,7 @@
 					<a class="fxg-nav_right_a" @click="changeLang('es')">{{$t('locale.es')}}</a>
 				</view>
 			</nav>
-			<nav class="fxg-nav-mini">
+			<nav class="fxg-nav-mini" @click="toggleNavbar">
 				<view class="fxg-nav-mini-container">
 					<view class="fxg-nav_left">
 					<view>
@@ -39,8 +39,18 @@
 						<span></span>
 					</view>
 				</view>
-
 			</nav>
+			<view class="nav_item_mini" v-if="isNavbarVisible">
+				  <view class="nav_item" @click="gotoPage('index')">{{$t('index.home_page')}}</view>
+					<view class="nav_item" @click="gotoPage('about_us')">{{$t('index.about')}}</view>
+					<view class="nav_item" >{{$t('index.serve_items')}}</view>
+					<view class="nav_item">{{$t('index.serve_center')}}</view>
+					<view class="nav_item">{{$t('index.news_center')}}</view>
+					<view class="nav_item">{{$t('index.common_question')}}</view>
+					<view class="nav_item">{{$t('index.recruitment')}}</view>
+					<view class="nav_item">{{$t('index.contact_us')}}</view>
+			</view>
+			<view class="nav_item_mini_bg" v-if="isNavbarVisible"></view>
 		</header>
 </template>
 
@@ -62,7 +72,23 @@ export default {
 			default: '标题'
 		}
 	},
+	data() {
+    return {
+      isNavbarVisible: false
+    };
+  },
 	methods: {
+		toggleNavbar(event) {
+      event.stopPropagation(); // 阻止事件冒泡
+      this.isNavbarVisible = !this.isNavbarVisible;
+    },
+    closeNavbar(event) {
+			const navbar = this.$refs.header;
+			// const navbar = this.$el.querySelector('.fxg-header');
+      if (navbar && !navbar.contains(event.target) && this.isNavbarVisible) {
+				this.isNavbarVisible = false;
+      }
+    },
 		changeLang(lang) {
 			console.log('Changing language to:', lang, 'Route:', routes[lang]);
 			uni.setLocale(lang);
@@ -80,7 +106,13 @@ export default {
 			});
 
 		}
-	}
+	},
+	mounted() {
+    document.addEventListener("click", this.closeNavbar);
+  },
+  beforeDestroy() {
+    document.removeEventListener("click", this.closeNavbar);
+  },
 }
 </script>
 
@@ -88,6 +120,16 @@ export default {
   @primary-color: #006FF0;
 	@hover-color: #3c9cff;
 
+	.nav_item_mini_bg {
+		width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 8;
+    background: #0d0d0d;
+    display: none;
+    opacity: 0.6;
+    height: 100%;
+	}
   .fxg-header--sticky {
 		z-index: 11000;
     position: fixed;
@@ -124,6 +166,7 @@ export default {
 		.fxg-nav_right {
 		  width: 38px;
 			height: 38px;
+			cursor: pointer;
 			span {
 				width: 100%;
 				height: 3px;
@@ -161,6 +204,33 @@ export default {
     justify-content: space-between;
     padding: 5px 25px;
 		cursor: pointer;
+	}
+	.nav_item_mini {
+		position: absolute;
+    top: 50px; /* Adjust based on header height */
+    left: 0;
+    background-color: white;
+    // border: 1px solid #ccc;
+    // display: none; /* Initially hidden */
+    // box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+		width: 100%;
+
+		.nav_item {
+			color: #333;
+			display: block;
+			font-size: 18px;
+			height: 48px;
+			line-height: 48px;
+			/* padding-left: 10px; */
+			padding-left: 2%;
+			cursor: pointer;
+			border-bottom: 1px solid #eee;
+			&:hover {
+				background: @primary-color;
+				color: white;
+			}
+		}
 	}
 
 	@media only screen and (max-width:1000px) { 

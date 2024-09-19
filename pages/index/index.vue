@@ -417,15 +417,15 @@
 			  {{$t('index.partner')}}
 				<view class="service_title_down">COOPERATIVE PARTNER</view>
 			</view>
-			<view>
+			<view class="cor_container_desc">
 				公司与DHL、UPS、FED、TNT、EMS、香港邮政等多家国际知名大型物流公司保持密切的合作关系
 			</view>
 			<view class="cor_container_img_container">
 				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/ara.jpg" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/dhl.jpg" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/ara.png" width="200px" height="120px"></u--image>
 				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/ems.png" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.jpg" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/ups.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/tnt.png" width="200px" height="120px"></u--image>
 			</view>
 			<!-- <view class="cor_container_img_container">
 				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/tnt.jpg" width="200px" height="120px"></u--image>
@@ -438,7 +438,7 @@
 
 		<Footer></Footer>
 		
-    <view class="title">{{$t('index.demo')}}</view>ddd
+    <!-- <view class="title">{{$t('index.demo')}}</view>ddd
     <view class="description">{{$t('index.demo-description')}}</view>
     <view class="detail-link">{{$t('index.detail')}}: <text
       class="link">https://uniapp.dcloud.net.cn/collocation/i18n</text></view>
@@ -457,7 +457,7 @@
         <text class="text">{{item.text}}</text>
         <text class="icon-check" v-if="item.code == applicationLocale"></text>
       </view>
-    </view>
+    </view> -->
   </view>
 </template>
 
@@ -749,7 +749,7 @@ import SvgIcon from '../component/SvgIcon.vue';
 	.cor_container {
 		background: url('../../static/cor_bg.png') no-repeat;
 		width: 100%;
-		height: 480px;
+		min-height: 450px;
 		background-size: cover;
 	}
 	.cor_container_title {
@@ -898,6 +898,7 @@ import SvgIcon from '../component/SvgIcon.vue';
 		width: 80%;
 		justify-content: center;
 		margin: 0 auto;
+		flex-wrap: wrap;
 	}
 	.cor_container_img_item {
     margin-left: 20px;
@@ -921,7 +922,7 @@ import SvgIcon from '../component/SvgIcon.vue';
 	}
 
 	.news_item_container {
-		width: 60%;
+		width: 70%;
 		display: flex;
 		margin: 0 auto;
 	}
@@ -1115,6 +1116,14 @@ import SvgIcon from '../component/SvgIcon.vue';
 		padding: 0 80px;
 		color: rgb(102, 102, 102)
 	}
+	.cor_container_desc {
+		text-align: center;
+		color: gray;
+		margin-bottom: 30px;
+	}
+	.news_item_img {
+		width: 40%;
+	}
 	@media only screen and (max-width:1000px) { 
 		.express_tab_container {
 			width: 90%;
@@ -1175,6 +1184,11 @@ import SvgIcon from '../component/SvgIcon.vue';
 		}
 		.news_item_img {
 			width: 45%;
+		}
+		.cor_container_desc {
+			width: 60%;
+			margin: 0 auto;
+			padding-bottom: 20px;
 		}
 	}
 </style>
