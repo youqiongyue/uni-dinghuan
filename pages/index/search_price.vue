@@ -45,12 +45,12 @@
 					  :label="$t('searchprice.weight')" 
 						prop="expressInfo.weight"
 						ref="item1"
-						class="custom-width"
+						class="destination-container"
 					>
 						<u--input
 							v-model="model1.expressInfo.weight"
 							type="number"
-						    class="search-input"
+						  class="search-input"
 							border="surround"
 						>
 							<template #suffix>
@@ -62,6 +62,7 @@
 					  :label="$t('searchprice.length')" 
 						prop="expressInfo.length"
 						ref="item1"
+						class="form-item-mini"
 					>
 						<u--input
 							v-model="model1.expressInfo.length"
@@ -78,6 +79,7 @@
 					  :label="$t('searchprice.width')" 
 						prop="expressInfo.width"
 						ref="item1"
+						class="form-item-mini"
 					>
 						<u--input
 							v-model="model1.expressInfo.width"
@@ -94,6 +96,7 @@
 					  :label="$t('searchprice.height')" 
 						prop="expressInfo.height"
 						ref="item1"
+						class="form-item-mini"
 					>
 						<u--input
 							v-model="model1.expressInfo.height"
@@ -389,7 +392,7 @@ export default {
 }
 .form-container {
 	width: 100%;
-	max-width: 992px;
+	max-width: 80%;
 	margin: 0 auto;
 	font-size: 12px;
 }
@@ -439,7 +442,7 @@ export default {
 }
 
 .search-input {
-  width: 300px;
+  min-width: 200px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -447,6 +450,10 @@ export default {
 }
 .search-input_short {
   width: 150px;
+}
+
+.form-item-mini {
+	flex: 1 1 30%;
 }
 
 .dropdown {
@@ -494,8 +501,18 @@ export default {
 }
 .destination-container {
 	position: relative;
+	flex: 1 1 50%;
 }
 .search_price_home {
 	cursor: pointer;
+}
+@media only screen and (max-width:1000px) {  
+	.form-container_upper {
+		width: 96%;
+    margin: 0 auto;
+	}
+	.search_price_container {
+		min-height: 600px;
+	}
 }
 </style>
