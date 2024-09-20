@@ -76,6 +76,7 @@
 						<u-button 
 							:text="$t('index.search_price')" 
 							size="large"
+							class="search_price_button"
 							customStyle="
 								width: 320px;
 								height: 50px;
@@ -662,6 +663,9 @@ import SvgIcon from '../component/SvgIcon.vue';
 <style lang="less"> 
   @primary-color: #006FF0;
 
+	body {
+		user-select: auto;
+	}
 	.uni-margin-wrap {
 		width: 690rpx;
 		width: 100%;
@@ -856,6 +860,12 @@ import SvgIcon from '../component/SvgIcon.vue';
     font-size: 14px;
     word-break: break-all;
   }
+	.search_price_button {
+		&:hover {
+			transition: 0.16s;
+      transform: scale(1.02, 1.06);
+		}
+	}
 
 	.service_item_container {
 		display: flex;

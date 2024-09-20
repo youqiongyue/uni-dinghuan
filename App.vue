@@ -25,4 +25,9 @@
   button {
     margin-bottom: 15px;
   }
+
+  body {
+    user-select: text; /* 禁止文本选择 */
+  }
+  
 </style>
