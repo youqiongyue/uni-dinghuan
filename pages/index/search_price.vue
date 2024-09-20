@@ -443,6 +443,7 @@ export default {
 
 .search-input {
   min-width: 200px;
+	max-width: 350px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -453,7 +454,7 @@ export default {
 }
 
 .form-item-mini {
-	flex: 1 1 30%;
+	// flex: 1 1 30%;
 }
 
 .dropdown {
