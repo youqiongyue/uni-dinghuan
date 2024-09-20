@@ -515,5 +515,8 @@ export default {
 	.search_price_container {
 		min-height: 600px;
 	}
+	.form-item-mini {
+	  flex: 1 1 30%;
+  }
 }
 </style>
