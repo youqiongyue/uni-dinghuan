@@ -1,57 +1,57 @@
 <template>
-    <header class="fxg-header fxg-header--sticky" ref="header">
-      <nav class="fxg-nav">
+	<header class="fxg-header fxg-header--sticky" ref="header">
+		<nav class="fxg-nav">
+			<view class="fxg-nav_left">
+				<view>
+					<a class="fxg-header__logo_wrapper fxg-keyboard" href="/" target="_self" data-analytics="FDX Logo | Home" onclick="FDX.DTM.pushLinkInfo(this)" aria-label="鼎环物流商标"><span class="fxg-mouse" tabindex="-1">
+						<img src="../../static/dh_logo.png" width="100%" height="100%" class="fxg-header__logo" alt="dh商标">
+					</span></a>
+				</view>
+				<view class="nav_item" @click="gotoPage('index')">{{$t('index.home_page')}}</view>
+				<view class="nav_item" @click="gotoPage('about_us')">{{$t('index.about')}}</view>
+				<view class="nav_item" >{{$t('index.serve_items')}}</view>
+				<view class="nav_item">{{$t('index.serve_center')}}</view>
+				<view class="nav_item">{{$t('index.news_center')}}</view>
+				<view class="nav_item">{{$t('index.common_question')}}</view>
+				<view class="nav_item">{{$t('index.recruitment')}}</view>
+				<view class="nav_item">{{$t('index.contact_us')}}</view>
+			</view>
+			<view  class="fxg-nav_right">
+				<a class="fxg-nav_right_a" @click="changeLang('zh-Hans')">{{$t('locale.zh-hans')}}</a>
+				<span> | </span>
+				<a class="fxg-nav_right_a" @click="changeLang('en')">{{$t('locale.en')}} </a>
+				<span> | </span>
+				<a class="fxg-nav_right_a" @click="changeLang('es')">{{$t('locale.es')}}</a>
+			</view>
+		</nav>
+		<nav class="fxg-nav-mini" @click="toggleNavbar">
+			<view class="fxg-nav-mini-container">
 				<view class="fxg-nav_left">
-				  <view>
+				<view>
 						<a class="fxg-header__logo_wrapper fxg-keyboard" href="/" target="_self" data-analytics="FDX Logo | Home" onclick="FDX.DTM.pushLinkInfo(this)" aria-label="鼎环物流商标"><span class="fxg-mouse" tabindex="-1">
 							<img src="../../static/dh_logo.png" width="100%" height="100%" class="fxg-header__logo" alt="dh商标">
 						</span></a>
 					</view>
-					<view class="nav_item" @click="gotoPage('index')">{{$t('index.home_page')}}</view>
-					<view class="nav_item" @click="gotoPage('about_us')">{{$t('index.about')}}</view>
-					<view class="nav_item" >{{$t('index.serve_items')}}</view>
-					<view class="nav_item">{{$t('index.serve_center')}}</view>
-					<view class="nav_item">{{$t('index.news_center')}}</view>
-					<view class="nav_item">{{$t('index.common_question')}}</view>
-					<view class="nav_item">{{$t('index.recruitment')}}</view>
-					<view class="nav_item">{{$t('index.contact_us')}}</view>
 				</view>
-				<view  class="fxg-nav_right">
-					<a class="fxg-nav_right_a" @click="changeLang('zh-Hans')">{{$t('locale.zh-hans')}}</a>
-					<span> | </span>
-					<a class="fxg-nav_right_a" @click="changeLang('en')">{{$t('locale.en')}} </a>
-					<span> | </span>
-					<a class="fxg-nav_right_a" @click="changeLang('es')">{{$t('locale.es')}}</a>
+				<view class="fxg-nav_right">
+					<span></span>
+					<span></span>
+					<span></span>
 				</view>
-			</nav>
-			<nav class="fxg-nav-mini" @click="toggleNavbar">
-				<view class="fxg-nav-mini-container">
-					<view class="fxg-nav_left">
-					<view>
-							<a class="fxg-header__logo_wrapper fxg-keyboard" href="/" target="_self" data-analytics="FDX Logo | Home" onclick="FDX.DTM.pushLinkInfo(this)" aria-label="鼎环物流商标"><span class="fxg-mouse" tabindex="-1">
-								<img src="../../static/dh_logo.png" width="100%" height="100%" class="fxg-header__logo" alt="dh商标">
-							</span></a>
-						</view>
-					</view>
-					<view class="fxg-nav_right">
-						<span></span>
-						<span></span>
-						<span></span>
-					</view>
-				</view>
-			</nav>
-			<view class="nav_item_mini" v-if="isNavbarVisible">
-				  <view class="nav_item" @click="gotoPage('index')">{{$t('index.home_page')}}</view>
-					<view class="nav_item" @click="gotoPage('about_us')">{{$t('index.about')}}</view>
-					<view class="nav_item" >{{$t('index.serve_items')}}</view>
-					<view class="nav_item">{{$t('index.serve_center')}}</view>
-					<view class="nav_item">{{$t('index.news_center')}}</view>
-					<view class="nav_item">{{$t('index.common_question')}}</view>
-					<view class="nav_item">{{$t('index.recruitment')}}</view>
-					<view class="nav_item">{{$t('index.contact_us')}}</view>
 			</view>
-			<view class="nav_item_mini_bg" v-if="isNavbarVisible"></view>
-		</header>
+		</nav>
+		<view class="nav_item_mini" v-if="isNavbarVisible" ref="navItemMini">
+				<view class="nav_item" @click="gotoPage('index')">{{$t('index.home_page')}}</view>
+				<view class="nav_item" @click="gotoPage('about_us')">{{$t('index.about')}}</view>
+				<view class="nav_item" >{{$t('index.serve_items')}}</view>
+				<view class="nav_item">{{$t('index.serve_center')}}</view>
+				<view class="nav_item">{{$t('index.news_center')}}</view>
+				<view class="nav_item">{{$t('index.common_question')}}</view>
+				<view class="nav_item">{{$t('index.recruitment')}}</view>
+				<view class="nav_item">{{$t('index.contact_us')}}</view>
+		</view>
+		<view class="nav_item_mini_bg" v-if="isNavbarVisible"></view>
+	</header>
 </template>
 
 <script>
@@ -85,7 +85,7 @@ export default {
     closeNavbar(event) {
 			const navbar = this.$refs.header;
 			// const navbar = this.$el.querySelector('.fxg-header');
-      if (navbar && !navbar.contains(event.target) && this.isNavbarVisible) {
+      if (navbar && event.target.className === 'nav_item_mini_bg' && this.isNavbarVisible) {
 				this.isNavbarVisible = false;
       }
     },
@@ -121,14 +121,27 @@ export default {
 	@hover-color: #3c9cff;
 
 	.nav_item_mini_bg {
-		width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 8;
-    background: #0d0d0d;
-    display: none;
-    opacity: 0.6;
-    height: 100%;
+		// width: 100%;
+    // position: fixed;
+    // top: 0;
+    // z-index: 8;
+    // background: #0d0d0d;
+    // display: none;
+    // opacity: 0.6;
+    // height: 100%;
+		position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* color: white; */
+    /* font-size: 20px; */
+    /* opacity: 0; */
+    transition: opacity 0.3s ease;
 	}
   .fxg-header--sticky {
 		z-index: 11000;
