@@ -130,6 +130,11 @@ export default {
 	/* border-bottom: 2px solid #f2f2f2; */
 
 }
+.tab-title {
+	&:hover {
+		color: #007AFF;
+	}
+}
 .tab-title-default.active {
   color: #007AFF;
   border-bottom: 2px solid #007AFF;
