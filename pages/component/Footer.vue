@@ -72,7 +72,7 @@
 			  <li><a href="/page/cn_about_fc.asp">企业风采</a></li>
 			</ul>
 		</view>
-		<div class="footer_item"><div class="footer_item_title">新闻中心</div>
+		<view class="footer_item"><div class="footer_item_title">新闻中心</div>
 			<svg width="75px" height="5px" viewBox="0 0 75 5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 							  <title>编组 3</title>
 							  <g id="上海复星医疗系统" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -87,8 +87,8 @@
 		    <ul class="footer_item_detail"><li><a href="/page/cn_news.asp?fid=1">最新公告</a></li>
 				<li><a href="/page/cn_news.asp?fid=2">公司新闻</a></li>
 				<li><a href="/page/cn_news.asp?fid=3">行业资讯</a></li>
-			</ul></div>
-		<div class="footer_item"><div class="footer_item_title">客服中心</div>
+			</ul></view>
+		<view class="footer_item"><div class="footer_item_title">客服中心</div>
 		<svg width="75px" height="5px" viewBox="0 0 75 5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 						  <title>编组 3</title>
 						  <g id="上海复星医疗系统" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -106,7 +106,7 @@
 			<li><a href="/page/cn_cust_view.asp?id=1037">海关编码查询</a></li>
 			<li><a href="/page/cn_cust_view.asp?id=1038">城市邮编查询</a></li>
 			<li><a href="/page/cn_cust_view.asp?id=1039">FBA仓库查询</a></li>
-		</ul></li></ul></div>
+		</ul></li></ul></view>
 		<!-- <div class="footer_item"><div class="foot1-t"><img src="/images/qm.png"></div></div> -->
 
 					
@@ -145,6 +145,7 @@
 	margin: 0 auto;
 	padding: 50px 0;
   justify-content: space-between;
+	flex-wrap: wrap;
 }
 
 
@@ -175,4 +176,10 @@
 .footer_container_inner {
 
 }
+@media only screen and (max-width:1000px) { 
+	.footer_container_inner {
+		width: 85%;
+	}
+}
+
 </style>	
