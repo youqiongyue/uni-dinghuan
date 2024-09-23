@@ -179,6 +179,10 @@
 @media only screen and (max-width:1000px) { 
 	.footer_container_inner {
 		width: 85%;
+		text-align: center;
+	}
+	.footer_item {
+		width: 100%;
 	}
 }
 
