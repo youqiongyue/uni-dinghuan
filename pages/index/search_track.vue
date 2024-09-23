@@ -338,4 +338,36 @@ export default {
 	cursor: pointer;
 }
 
+@media only screen and (max-width:1000px) {  
+	.form-container {
+		width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+	}
+	.route-status-icon-circle {
+		margin-right: 0;
+	}
+	.route-status-content {
+		width: 180px;
+		padding-left: 10px;
+	}
+	.route-status-icon {
+		margin-right: 0px;
+	}
+	.dashed-line { 
+		left: 180px;
+	}
+	.search-input {
+		width: 200px;
+	}
+}
+@media only screen and (max-width:430px) {  
+	.dashed-line { 
+		left: 123px;
+	}
+	.route-time {
+		margin-right: 0;
+	}
+}
+
 </style>
