@@ -45,12 +45,12 @@
 					  :label="$t('searchprice.weight')" 
 						prop="expressInfo.weight"
 						ref="item1"
-						class="custom-width"
+						class="destination-container"
 					>
 						<u--input
 							v-model="model1.expressInfo.weight"
 							type="number"
-						    class="search-input"
+						  class="search-input"
 							border="surround"
 						>
 							<template #suffix>
@@ -62,6 +62,7 @@
 					  :label="$t('searchprice.length')" 
 						prop="expressInfo.length"
 						ref="item1"
+						class="form-item-mini"
 					>
 						<u--input
 							v-model="model1.expressInfo.length"
@@ -78,6 +79,7 @@
 					  :label="$t('searchprice.width')" 
 						prop="expressInfo.width"
 						ref="item1"
+						class="form-item-mini"
 					>
 						<u--input
 							v-model="model1.expressInfo.width"
@@ -94,6 +96,7 @@
 					  :label="$t('searchprice.height')" 
 						prop="expressInfo.height"
 						ref="item1"
+						class="form-item-mini"
 					>
 						<u--input
 							v-model="model1.expressInfo.height"
@@ -119,10 +122,10 @@
 				<view v-if="this.priceData.length" class="table">
 					<view  class="table-header">
 						<view class="table-row">
-							<view class="table-cell">{{$t('index.channel')}}</view>
-							<view class="table-cell">{{$t('index.estimated_freight')}}</view>
-							<view class="table-cell">{{$t('index.trans_time')}}</view>
-							<view class="table-cell">{{$t('index.available_goods')}}</view>
+							<view class="table-cell">{{$t('searchprice.channel')}}</view>
+							<view class="table-cell">{{$t('searchprice.estimated_freight')}}</view>
+							<view class="table-cell">{{$t('searchprice.trans_time')}}</view>
+							<view class="table-cell">{{$t('searchprice.available_goods')}}</view>
 						</view>
 					</view>
 					<view class="table-body">
@@ -151,13 +154,13 @@ import Navigator from '../component/Navigation.vue';
 import Footer from '../component/Footer.vue';
 
 const defaultHistory = [{
-	countryName: '美国',
+	countryName: '美国 Unite State',
 	countryCode: 'US'
 }, {
-	countryName: '加拿大',
+	countryName: '加拿大 Canada',
 	countryCode: 'CA'
 }, {
-	countryName: '墨西哥',
+	countryName: '墨西哥 Mexico',
 	countryCode: 'MX'
 }];
 export default {
@@ -238,7 +241,7 @@ export default {
 			})
 			this.history = result.map(item => {
 				return {
-					countryName: item.chinese_name + (item.english_name),
+					countryName: item.chinese_name + ' ' + (item.english_name),
 					countryCode: item.country_code,
 					countryRealName: item.chinese_name
 				}
@@ -272,9 +275,9 @@ export default {
 				} = this.model1.expressInfo;
 				// 注意最终一定要显示的是二字码
 				console.log(destination)
-			
+			  const chinese_name = destination.split(' ')[0];
 				let countryCode = country.find(item => {
-					return item.chinese_name === destination || item.english_name.toLowerCase() === destination.toLowerCase() || item.country_code.toLowerCase() ===  destination.toLowerCase()
+					return item.chinese_name === chinese_name;
 				})
 				const a = countryCode.country_code;
 
@@ -389,7 +392,7 @@ export default {
 }
 .form-container {
 	width: 100%;
-	max-width: 992px;
+	max-width: 80%;
 	margin: 0 auto;
 	font-size: 12px;
 }
@@ -439,7 +442,8 @@ export default {
 }
 
 .search-input {
-  width: 300px;
+  min-width: 200px;
+	max-width: 350px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -447,6 +451,10 @@ export default {
 }
 .search-input_short {
   width: 150px;
+}
+
+.form-item-mini {
+	// flex: 1 1 30%;
 }
 
 .dropdown {
@@ -494,8 +502,21 @@ export default {
 }
 .destination-container {
 	position: relative;
+	flex: 1 1 50%;
 }
 .search_price_home {
 	cursor: pointer;
+}
+@media only screen and (max-width:1000px) {  
+	.form-container_upper {
+		width: 96%;
+    margin: 0 auto;
+	}
+	.search_price_container {
+		min-height: 600px;
+	}
+	.form-item-mini {
+	  flex: 1 1 30%;
+  }
 }
 </style>

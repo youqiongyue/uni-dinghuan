@@ -7,7 +7,7 @@
 			height="500"
 			circular
 			indicator
-			interval="5000"
+			interval="120000"
 			indicatorMode="line"
 			indicatorStyle="bottom: 80px"
 
@@ -19,7 +19,7 @@
 					<view v-if="index === 0">
 						<div class="search-input">
 							<u--input
-								placeholder="请输入你的单号"
+								:placeholder="$t('index.enter_track_id')" 
 								border="surround"
 								v-model="value"
 								ref="trackIdInput"
@@ -38,7 +38,7 @@
 							></u--input>
 							<u-button 
 									type="primary" 
-									text="查询" 
+									:text="$t('index.track_button')" 
 								  @click="handleClick"
 									customStyle="
 										width: 184px;
@@ -76,6 +76,7 @@
 						<u-button 
 							:text="$t('index.search_price')" 
 							size="large"
+							class="search_price_button"
 							customStyle="
 								width: 320px;
 								height: 50px;
@@ -92,6 +93,58 @@
 					<view v-if="index === 2">联系电话:  whatsapp: </view>
 				</Tab>
 			</Tabs>
+		</view>
+
+		<view class="special_price_container">
+				<view class="service_title">
+					{{$t('index.special_price')}}
+					<view class="service_title_down">SPECIAL_OFFER</view>
+				</view>
+				<view class="special_item_container">
+					<view class="uni-margin-wrap">
+						<view class="special_to_left" @click="toLeft">
+							<img src="../../static/left_icon.png" width="25px" height="25px"></img>
+						</view>
+						<swiper 
+						  class="swiper" 
+						  circular 
+							:autoplay="autoplay" 
+							:interval="interval"
+							:duration="duration"
+							:current="currentIndex"
+              @change="onSwiperChange"
+						>
+							<swiper-item
+								v-for="(group, index) in specialPriceGroup"
+								:key="index"
+								class="swiper-item_child"
+							>
+							  <view
+									class="swiper-item"
+									v-for="(item, imgIndex) in group"
+									:key="imgIndex"
+								> 
+								  <img :showLoading="true" :src="item.bg" width="100%" height="100%"></img>
+								  <view class="swiper-item_country">
+										<!-- <img class="swiper-item_country_img" src="../../static/us.png"></img> -->
+										<svg-icon class="swiper-item_country_img" :src="item.svg" width="35px" height="30px"/>
+										<view class="swiper-item_country_name">{{item.country}}</view>
+									</view>
+									<view class="swiper-item_price">
+										<view class="swiper-item_price_num">￥ <span class="swiper-item_price_detail"> {{item.price}}</span> <span>/kg</span></view>
+                    <view class="swiper-item_price_kg">99kg 起</view>
+									</view>
+				
+									<!-- 你可以在这里添加其他内容，比如标题或描述 -->
+								</view>
+		
+							</swiper-item>
+						</swiper>
+						<view class="special_to_right"  @click="toRight">
+							<img src="../../static/right_icon.png" width="25px" height="25px"></img>
+						</view>
+					</view>
+				</view>
 		</view>
 
 		<view class="express_delivery">
@@ -162,8 +215,6 @@
 					<view class="service_item_title">{{$t('index.sea_dtd')}}</view>
 					<view class="service_item_desc">{{$t('index.sea_dtd_detail')}}</view>
 				</view>
-			</view>
-			<view class="service_item_container">
 				<view class="service_item">
 					<svg width="80px" height="80px" viewBox="0 0 140 140" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 					    <title>{{$t('index.sea_to_port')}}</title>
@@ -222,111 +273,9 @@
 					<view class="service_item_desc">{{$t('index.global_express_detail')}}</view>
 				</view>
 			</view>
-			
-			<!-- <Tabs :tabs="serviceTabs" :current.sync="currentTabService">
-				<Tab v-for="(tab, index) in tabs" :key="index" :index="index" :current="currentTabService">
-					<ul  class="fwxm-rigth-m" v-if="index === 0">				
-						<li class="">
-							<a href="/page/cn_service_view.asp?id=29">
-							<div class="fwxm-rigth-img"><img src="https://www.gzdhgj.com/ufile/202303202123111018.jpg" />
-							<div class="fwxm-rigth-icon fwxm-rigth-icon-1"></div>
-								<div class="fwxm-rigth-txt">
-									<div class="fwxm-rigth-txt-1">美国空运</div>
-									<p>美国空运是以美国各大机场为依托，通过货机或者可载货的客机运输货物到达美国，结合当地的经济、政策进行贸易交易，或其他合法操作的国际物流渠道。美国空运以其迅捷，安全，准时的超高效率赢得了相当大的市场，大大缩短了交货期</p>
-								</div>
-							</div>
-							</a>
-						</li>
-						<li class="">
-								<a href="/page/cn_service_view.asp?id=31">
-								<div class="fwxm-rigth-img"><img src="https://www.gzdhgj.com/ufile/202303202119426752.jpg">
-								<div class="fwxm-rigth-icon fwxm-rigth-icon-1"></div>
-								<div class="fwxm-rigth-txt"><div class="fwxm-rigth-txt-1">欧洲空运</div>
-								<p>欧洲空运专线是鼎环国际物流整合香港、深圳、广州飞往欧洲的空运物流渠道，并结合清关团队资源开发的欧洲DDP快递专线服，采用头程空运+末端多渠道派送方式</p>
-								</div>
-								</div>
-								</a>
-						</li>
-						<li class="">
-								<a href="/page/cn_service_view.asp?id=34">
-								<div class="fwxm-rigth-img"><img src="https://www.gzdhgj.com/ufile/202303202120591845.jpg">
-								<div class="fwxm-rigth-icon fwxm-rigth-icon-1"></div>
-								<div class="fwxm-rigth-txt"><div class="fwxm-rigth-txt-1">德国空运</div>
-								<p>德国空运专线是鼎环国际物流为跨境卖家提供的从深圳，广州，香港三大机场起飞，与多家多家航空公司合作，直飞德国的空运专线渠道（含德国包机专线服务），后端采用德国本土卡车、快递两种派送方式</p>
-								</div>
-								</div>
-								</a>
-						</li>
-					</ul>
-				</Tab>
-			</Tabs> -->
-		</view>
-		
-		<view class="special_price_container">
-				<view class="service_title">
-					{{$t('index.special_price')}}
-					<view class="service_title_down">SPECIAL_OFFER</view>
-				</view>
-				<view class="special_item_container">
-					<view class="uni-margin-wrap">
-						<view class="special_to_left" @click="toLeft">
-							<img src="../../static/left_icon.png" width="25px" height="25px"></img>
-						</view>
-						<swiper 
-						  class="swiper" 
-						  circular 
-							:autoplay="autoplay" 
-							:interval="interval"
-							:duration="duration"
-							:current="currentIndex"
-              @change="onSwiperChange"
-						>
-							<swiper-item
-								v-for="(group, index) in specialPriceGroup"
-								:key="index"
-								class="swiper-item_child"
-							>
-								<view
-									class="swiper-item uni-bg-red"
-									v-for="(item, imgIndex) in group"
-									:key="imgIndex"
-									:style="{ 
-										background: 'url(' + item.bg + ') no-repeat',
-										backgroundSize: 'contain'
-									}"
-								> 
-								  <view class="swiper-item_country">
-										<img class="swiper-item_country_img" src="../../static/us.png"></img>
-										<view class="swiper-item_country_name">美国</view>
-									</view>
-									<view class="swiper-item_price">
-										<view class="swiper-item_price_num">￥ <span class="swiper-item_price_detail"> 9.72</span> <span>/kg</span></view>
-                    <view class="swiper-item_price_kg">99kg 起</view>
-									</view>
-				
-									<!-- 你可以在这里添加其他内容，比如标题或描述 -->
-								</view>
-							</swiper-item>
-							<!-- <swiper-item class="swiper-item_child">
-								<view class="swiper-item uni-bg-red">
-	
-								</view>
-								<view class="swiper-item uni-bg-red">A</view>
-								<view class="swiper-item uni-bg-red">A</view>
-								<view class="swiper-item uni-bg-red">A</view>
-							</swiper-item>
-							<swiper-item>
-								<view class="swiper-item uni-bg-green">B</view>
-							</swiper-item>
-							<swiper-item>
-								<view class="swiper-item uni-bg-blue">C</view>
-							</swiper-item> -->
-						</swiper>
-						<view class="special_to_right"  @click="toRight">
-							<img src="../../static/right_icon.png" width="25px" height="25px"></img>
-						</view>
-					</view>
-				</view>
+			<!-- <view class="service_item_container">
+
+			</view> -->
 		</view>
 		
 		<!-- <view>
@@ -428,37 +377,37 @@
 			</view>
 			<view class="news_item_container">
 				<view class="news_item">
-					<img src="../../static/price_one.png" width="200px" height="120px" class="news_item_img"/>
+					<img src="../../static/news_1.png" height="120px" class="news_item_img"/>
 					<view class="news_desc">
-						<view class="news_item_title">FBA空运操作流程的讲解FBA空运操作流程的讲解</view>
-						<view class="news_item_desc">FBA空运是一种重要的FBA运输方式，虽然它对货物尺寸和种类要求较高，其…</view>
-						<view class="news_item_date">2023 / 11 / 12</view>
+						<view class="news_item_title">出口加拿大注意：对涉华盘条作出反倾销终裁</view>
+						<view class="news_item_desc">2024年9月4日，加拿大边境服务署（CBSA）对原产于或进口自中国、埃及和越南的盘条（Wire Rod）作出反倾销肯定性终裁，裁定中...</view>
+						<view class="news_item_date">2024-09-13</view>
 					</view>
 				</view>
 				<view class="news_item">
-					<img src="../../static/price_one.png" width="200px" height="120px" class="news_item_img"/>
+					<img src="../../static/news_2.png" height="120px" class="news_item_img"/>
 					<view class="news_desc">
-						<view class="news_item_title">FBA空运操作流程的讲解FBA空运操作流程的讲解</view>
-						<view class="news_item_desc">FBA空运是一种重要的FBA运输方式，虽然它对货物尺寸和种类要求较高，其…</view>
-						<view class="news_item_date">2023 / 11 / 12</view>
+						<view class="news_item_title">首个！汉莎货运航空将推出亚洲飞往美国的直飞服务</view>
+						<view class="news_item_desc">随着该地区市场需求持续激增，汉莎货运航空即将推出首个从亚洲飞往美国的直飞服务。该航空公司今天宣布将增加一条...</view>
+						<view class="news_item_date">2024-09-13</view>
 					</view>
 				</view>
 			</view>
 			<view class="news_item_container">
 				<view class="news_item">
-					<img src="../../static/price_one.png" width="200px" height="120px" class="news_item_img"/>
+					<img src="../../static/news_3.png" height="120px" class="news_item_img"/>
 					<view class="news_desc">
-						<view class="news_item_title">FBA空运操作流程的讲解FBA空运操作流程的讲解</view>
-						<view class="news_item_desc">FBA空运是一种重要的FBA运输方式，虽然它对货物尺寸和种类要求较高，其…</view>
-						<view class="news_item_date">2023 / 11 / 12</view>
+						<view class="news_item_title">为满足需求，DHL Express 增加第四季度高峰运力</view>
+						<view class="news_item_desc">DHL Express 正在投资超过 1 亿欧元用于运输和处理能力，以满足第四季度旺季的预期需求。该公司表示，2024年第四...</view>
+						<view class="news_item_date">2024-09-13</view>
 					</view>
 				</view>
 				<view class="news_item">
-					<img src="../../static/price_one.png" width="200px" height="120px" class="news_item_img"/>
+					<img src="../../static/news_4.png" height="120px" class="news_item_img"/>
 					<view class="news_desc">
-						<view class="news_item_title">FBA空运操作流程的讲解FBA空运操作流程的讲解</view>
-						<view class="news_item_desc">FBA空运是一种重要的FBA运输方式，虽然它对货物尺寸和种类要求较高，其…</view>
-						<view class="news_item_date">2023 / 11 / 12</view>
+						<view class="news_item_title">巴西​​​​​​​更新进口食品化妆品行政处理程序要求</view>
+						<view class="news_item_desc">2024年9月3日，巴西国家卫生监督局（ANVISA）更新进口食品化妆品行政处理程序要求，新的处理程序涉及进口用于生产须接受...</view>
+						<view class="news_item_date">2024-09-13</view>
 					</view>
 				</view>
 			</view>
@@ -469,25 +418,28 @@
 			  {{$t('index.partner')}}
 				<view class="service_title_down">COOPERATIVE PARTNER</view>
 			</view>
-			<view class="cor_container_img_container">
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
+			<view class="cor_container_desc">
+				{{$t('index.partner_detail')}}
 			</view>
 			<view class="cor_container_img_container">
 				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
-				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/ara.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/ems.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/ups.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/tnt.png" width="200px" height="120px"></u--image>
 			</view>
+			<!-- <view class="cor_container_img_container">
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/tnt.jpg" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/ups.jpg" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
+				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>
+			</view> -->
 		</view>
 
 		<Footer></Footer>
 		
-    <view class="title">{{$t('index.demo')}}</view>ddd
+    <!-- <view class="title">{{$t('index.demo')}}</view>ddd
     <view class="description">{{$t('index.demo-description')}}</view>
     <view class="detail-link">{{$t('index.detail')}}: <text
       class="link">https://uniapp.dcloud.net.cn/collocation/i18n</text></view>
@@ -506,7 +458,7 @@
         <text class="text">{{item.text}}</text>
         <text class="icon-check" v-if="item.code == applicationLocale"></text>
       </view>
-    </view>
+    </view> -->
   </view>
 </template>
 
@@ -515,13 +467,15 @@ import Navigator from '../component/Navigation.vue';
 import Tabs from '../component/tabs.vue';
 import Tab from '../component/tab.vue';
 import Footer from '../component/Footer.vue';
+import SvgIcon from '../component/SvgIcon.vue';
 
   export default {
 		components: {
 				Tabs,
 				Tab,
 				Footer,
-				Navigator
+				Navigator,
+				SvgIcon
 		},
     data() {
 			uni.setLocale('zh-Hans');
@@ -552,43 +506,59 @@ import Footer from '../component/Footer.vue';
 				],
 				specialPrice: [
 					{
-						'price': 9.72,
+						'price': 8.10,
+						'country': '美国',
 						'num': 99,
+						'svg': "../../static/us.svg",
 						'bg': '../../static/price_one.png'
 					},
 					{
-						'price': 9.72,
+						'price': 9.30,
+						'country': '加拿大',
 						'num': 99,
+						'svg': '../../static/ca.svg',
 						'bg': '../../static/price_two.png'
 					},
 					{
-						'price': 9.72,
+						'price': 27.00,
 						'num': 99,
+						'country': '墨西哥',
+						'svg': '../../static/mx.svg',
 						'bg': '../../static/price_three.png'
 					},
 					{
-						'price': 9.72,
+						'price': 9.50,
 						'num': 99,
-						'bg': '../../static/price_four.png'
+						'country': '德国',
+						'svg': '../../static/de.svg',
+						'bg':  '../../static/price_four.png'
 					},
 					{
-						'price': 9.72,
+						'price': 11.00,
 						'num': 99,
+						'country': '英国',
+						'svg': '../../static/gb.svg',
 						'bg': '../../static/price_one.png'
 					},
 					{
-						'price': 9.72,
+						'price': 11.50,
 						'num': 99,
+						'country': '法国',
+						'svg': '../../static/fr.svg',
 						'bg': '../../static/price_two.png'
 					},
 					{
-						'price': 9.72,
+						'price': 12.50,
 						'num': 99,
+						'country': '西班牙',
+						'svg': '../../static/es.svg',
 						'bg': '../../static/price_three.png'
 					},
 					{
-						'price': 9.72,
+						'price': 9.80,
 						'num': 99,
+						'country': '澳大利亚',
+						'svg': '../../static/au.svg',
 						'bg': '../../static/price_four.png'
 					}
 				],
@@ -693,6 +663,9 @@ import Footer from '../component/Footer.vue';
 <style lang="less"> 
   @primary-color: #006FF0;
 
+	body {
+		user-select: auto;
+	}
 	.uni-margin-wrap {
 		width: 690rpx;
 		width: 100%;
@@ -703,8 +676,10 @@ import Footer from '../component/Footer.vue';
     color: #fff;
     font-weight: 300;
     margin: 10px 10px;
-    width: 258px;
     justify-content: space-between;
+		position:absolute;
+		top: 0;
+		width: 90%;
 	}
 	.swiper-item_price_detail {
 		font-size: 26px;
@@ -719,10 +694,16 @@ import Footer from '../component/Footer.vue';
 		color: #FFFFFF;
 		font-weight: 300;
     justify-content: space-between;
-    margin: 10px 10px;
+    // margin: 10px 10px;
     margin-top: 80px;
 		align-items: center;
 		width: 258px;
+		position:absolute;
+		bottom: 10px;
+    width: 90%;
+		margin-left: 10px;
+		margin-right: 10px;
+	
 	}
 	.express_search_price_container {
 		display: flex;
@@ -738,7 +719,7 @@ import Footer from '../component/Footer.vue';
 		width: 30px;
 		height: 30px;
 		position: absolute;
-    left: 15%;
+    left: 10%;
     top: 30%;
 		cursor: pointer;
 	}
@@ -746,13 +727,13 @@ import Footer from '../component/Footer.vue';
 		width: 30px;
 		height: 30px;
 		position: absolute;
-    right: 15%;
+    right: 10%;
     top: 30%;
 		cursor: pointer;
 	}
 	.swiper {
 		height: 180px;
-		width: 62%;
+		width: 70%;
 		margin: 0 auto;
 	}
 	.swiper-item_child {
@@ -763,6 +744,7 @@ import Footer from '../component/Footer.vue';
 		text-align: center;
 		flex: 1;
 		margin: 10px;
+		position: relative;
 	}
 	.info {
 		position: absolute;
@@ -771,7 +753,7 @@ import Footer from '../component/Footer.vue';
 	.cor_container {
 		background: url('../../static/cor_bg.png') no-repeat;
 		width: 100%;
-		height: 480px;
+		min-height: 450px;
 		background-size: cover;
 	}
 	.cor_container_title {
@@ -865,7 +847,7 @@ import Footer from '../component/Footer.vue';
 	}
 	.express_delivery {
 		background: #fff;
-		margin-top: 320px;
+		margin-top: 100px;
 	}
 
   .description {
@@ -878,6 +860,12 @@ import Footer from '../component/Footer.vue';
     font-size: 14px;
     word-break: break-all;
   }
+	.search_price_button {
+		&:hover {
+			transition: 0.16s;
+      transform: scale(1.02, 1.06);
+		}
+	}
 
 	.service_item_container {
 		display: flex;
@@ -885,6 +873,7 @@ import Footer from '../component/Footer.vue';
 		margin: 0 auto;
 		margin: 30px auto;
 		justify-content: center;
+		flex-wrap: wrap;
 	}
 	.service_item {
 		width: 33%;
@@ -912,13 +901,14 @@ import Footer from '../component/Footer.vue';
 		width: 70%;
 	}
 	.special_price_container {
-		margin-top: 60px;
+		margin-top: 320px;
 	}
 	.cor_container_img_container {
 		display: flex;
 		width: 80%;
 		justify-content: center;
 		margin: 0 auto;
+		flex-wrap: wrap;
 	}
 	.cor_container_img_item {
     margin-left: 20px;
@@ -942,12 +932,13 @@ import Footer from '../component/Footer.vue';
 	}
 
 	.news_item_container {
-		width: 60%;
+		width: 70%;
 		display: flex;
 		margin: 0 auto;
 	}
 	.news_desc {
 		padding-left: 15px;
+		padding-top: 5px;
 	}
 	.news_item {
 		width: 50%;
@@ -964,6 +955,13 @@ import Footer from '../component/Footer.vue';
 		font-weight: 400;
     font-size: 14px;
     color: #666666;
+		height: 40px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    line-height: 1.5;
 	}
 	.news_item_date {
 		margin-top: 10px;
@@ -1127,5 +1125,80 @@ import Footer from '../component/Footer.vue';
 		display: flex;
 		padding: 0 80px;
 		color: rgb(102, 102, 102)
+	}
+	.cor_container_desc {
+		text-align: center;
+		color: gray;
+		margin-bottom: 30px;
+	}
+	.news_item_img {
+		width: 40%;
+	}
+	@media only screen and (max-width:1000px) { 
+		.express_tab_container {
+			width: 90%;
+			left: 5%;
+		}
+		.tabs-header {
+			max-width: 80%;
+		}
+		.search-input {
+			width: 90%;
+		}
+		.swiper-item_child {
+			flex-wrap: wrap;
+		}
+		.swiper-item {
+			width: 48%;
+			margin: 0 auto;
+			height: 120px;
+			flex: none;
+		}
+		.swiper {
+			height: 300px;
+			width: 90%;
+		}
+		.service_item_container {
+			width: 90%;
+		}
+		.special_to_right {
+			right: 0%;
+			top: 40%;
+		}
+		.special_to_left {
+			left: 0%;
+			top: 40%;
+		}
+		.express_delivery {
+			margin-top: 0px
+		}
+		.about_us_desc {
+			width: 80%;
+		}
+		.service_item {
+			width: 50%;
+			margin-bottom: 20px;
+		}
+		.about_us_svg_container {
+			width: 80%;
+			margin: 10px auto;
+		}
+		.news_item_container {
+			width: 90%;
+			flex-wrap: wrap;
+		}
+		.news_item {
+			margin: 0;
+			margin-bottom: 20px;
+			width: 100%;
+		}
+		.news_item_img {
+			width: 45%;
+		}
+		.cor_container_desc {
+			width: 60%;
+			margin: 0 auto;
+			padding-bottom: 20px;
+		}
 	}
 </style>

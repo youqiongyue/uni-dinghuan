@@ -419,7 +419,7 @@
 				<view class="service_title_down">COOPERATIVE PARTNER</view>
 			</view>
 			<view class="cor_container_desc">
-				公司与DHL、UPS、FED、TNT、EMS、香港邮政等多家国际知名大型物流公司保持密切的合作关系
+				{{$t('index.partner_detail')}}
 			</view>
 			<view class="cor_container_img_container">
 				<u--image class="cor_container_img_item" :showLoading="true" src="../../static/fedex.png" width="200px" height="120px"></u--image>

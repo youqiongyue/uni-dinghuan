@@ -183,6 +183,7 @@
 	}
 	.footer_item {
 		width: 100%;
+		margin-bottom: 30px;
 	}
 }
 
