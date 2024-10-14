@@ -46,6 +46,12 @@
 				"navigationBarTitleText": "",
 				"navigationStyle": "custom"
 			}
+		},{
+			"path": "pages/index_en/about_us",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
 		},
 		{
 			"path": "pages/index_es/index",
@@ -60,6 +66,12 @@
 			}
 		}, {
 			"path": "pages/index_es/search_track",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/index_es/about_us",
 			"style": {
 				"navigationBarTitleText": "",
 				"navigationStyle": "custom"

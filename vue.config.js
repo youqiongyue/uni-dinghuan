@@ -16,7 +16,16 @@ module.exports = {
           routes: [
             '/',
             '/pages/index/search_price',
-            '/pages/index/search_track'
+            '/pages/index/search_track',
+            '/pages/index/about_us',
+            '/pages/index_en/index',
+            '/pages/index_en/search_price',
+            '/pages/index_en/search_track',
+            '/pages/index_en/about_us',
+            '/pages/index_es/index',
+            '/pages/index_es/search_price',
+            '/pages/index_es/search_track',
+            '/pages/index_es/about_us'
           ],
 
           // 这个很重要，如果没有配置这段，也不会进行预编译
