@@ -442,7 +442,7 @@ export default {
 }
 
 .search-input {
-  min-width: 200px;
+  min-width: 100px;
 	max-width: 350px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -509,7 +509,7 @@ export default {
 }
 @media only screen and (max-width:1000px) {  
 	.form-container_upper {
-		width: 96%;
+		width: 80%;
     margin: 0 auto;
 	}
 	.search_price_container {
@@ -518,5 +518,11 @@ export default {
 	.form-item-mini {
 	  flex: 1 1 30%;
   }
+	.search-input_short {
+    width: 100px;
+  }
+	.search_price_button {
+		width: 60%;
+	}
 }
 </style>
