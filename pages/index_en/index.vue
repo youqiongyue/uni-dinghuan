@@ -4,13 +4,12 @@
 		<!-- <view class="banner"></view> -->
 		<u-swiper
       :list="list1"
-			height="500"
+      :height="computedHeight"
 			circular
 			indicator
 			interval="120000"
 			indicatorMode="line"
 			indicatorStyle="bottom: 80px"
-
     ></u-swiper>
 
 		<view class="express_tab_container">
@@ -492,7 +491,10 @@ import SvgIcon from '../component/SvgIcon.vue';
 				indicatorDots: true,
 				autoplay: false,
 				interval: 5000,
+				defaultHeight: 500,
+				smallScreenHeight: 250,
 				duration: 1000,
+				screenWidth: 0,
 				currentIndex: 0,
 				list1: [
 						'../../static/banner.png',
@@ -595,7 +597,10 @@ import SvgIcon from '../component/SvgIcon.vue';
 					groups.push(this.specialPrice.slice(i, i + 4));
 				}
         return groups;
-			}
+			},
+      computedHeight() {
+        return this.screenWidth < 800 ? this.smallScreenHeight : this.defaultHeight;
+      },
     },
     onLoad() {
       let systemInfo = uni.getSystemInfoSync();
@@ -606,10 +611,18 @@ import SvgIcon from '../component/SvgIcon.vue';
         this.applicationLocale = e.locale;
       })
     },
+		mounted() {
+			this.updateScreenWidth();
+			uni.onWindowResize(this.updateScreenWidth);
+    },
     methods: {
 			onSwiperChange(event) {
         this.currentIndex = event.detail.current;
 			},
+			updateScreenWidth() {
+				const systemInfo = uni.getSystemInfoSync();
+				this.screenWidth = systemInfo.screenWidth;
+      },
 			toLeft() {
 				if (this.currentIndex > 0) {
 					this.currentIndex--;
@@ -1004,6 +1017,9 @@ import SvgIcon from '../component/SvgIcon.vue';
 	    -webkit-line-clamp: 3;
 	    -webkit-box-orient: vertical;
 	}
+	.swiper_banner {
+		height: 500px;
+	}
 	.fwxm-rigth-txt {
     position: absolute;
     color: #333333;
@@ -1199,6 +1215,9 @@ import SvgIcon from '../component/SvgIcon.vue';
 			width: 60%;
 			margin: 0 auto;
 			padding-bottom: 20px;
+		}
+		.swiper_banner {
+			height: 250px;
 		}
 	}
 </style>
