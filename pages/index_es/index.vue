@@ -509,14 +509,14 @@ import SvgIcon from '../component/SvgIcon.vue';
 				specialPrice: [
 					{
 						'price': 8.10,
-						'country': '美国',
+						'country': this.$t('searchprice.us'),
 						'num': 99,
 						'svg': "../../static/us.svg",
 						'bg': '../../static/price_one.png'
 					},
 					{
 						'price': 9.30,
-						'country': '加拿大',
+						'country': this.$t('searchprice.ca'),
 						'num': 99,
 						'svg': '../../static/ca.svg',
 						'bg': '../../static/price_two.png'
@@ -524,42 +524,42 @@ import SvgIcon from '../component/SvgIcon.vue';
 					{
 						'price': 27.00,
 						'num': 99,
-						'country': '墨西哥',
+						'country': this.$t('searchprice.mx'),
 						'svg': '../../static/mx.svg',
 						'bg': '../../static/price_three.png'
 					},
 					{
 						'price': 9.50,
 						'num': 99,
-						'country': '德国',
+						'country': this.$t('searchprice.de'),
 						'svg': '../../static/de.svg',
 						'bg':  '../../static/price_four.png'
 					},
 					{
 						'price': 11.00,
 						'num': 99,
-						'country': '英国',
+						'country': this.$t('searchprice.gb'),
 						'svg': '../../static/gb.svg',
 						'bg': '../../static/price_one.png'
 					},
 					{
 						'price': 11.50,
 						'num': 99,
-						'country': '法国',
+						'country': this.$t('searchprice.fr'),
 						'svg': '../../static/fr.svg',
 						'bg': '../../static/price_two.png'
 					},
 					{
 						'price': 12.50,
 						'num': 99,
-						'country': '西班牙',
+						'country': this.$t('searchprice.es'),
 						'svg': '../../static/es.svg',
 						'bg': '../../static/price_three.png'
 					},
 					{
 						'price': 9.80,
 						'num': 99,
-						'country': '澳大利亚',
+						'country': this.$t('searchprice.au'),
 						'svg': '../../static/au.svg',
 						'bg': '../../static/price_four.png'
 					}
@@ -610,6 +610,8 @@ import SvgIcon from '../component/SvgIcon.vue';
       uni.onLocaleChange((e) => {
         this.applicationLocale = e.locale;
       })
+			uni.setLocale('es');
+			this.$i18n.locale = 'es';
     },
 		mounted() {
 			this.updateScreenWidth();
