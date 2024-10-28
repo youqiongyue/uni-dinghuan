@@ -107,6 +107,10 @@ export default {
 			isSucc: false
 		}
 	},
+	onLoad() {	
+		uni.setLocale('es');
+		this.$i18n.locale = 'es';
+  },
 	mounted() {
 		const query = this.$route.query;
 		const trackId = query.track_id;

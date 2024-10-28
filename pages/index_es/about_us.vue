@@ -74,6 +74,10 @@ export default {
 
 		}
 	},
+  onLoad() {	
+		uni.setLocale('es');
+		this.$i18n.locale = 'es';
+  },
 
 }
 

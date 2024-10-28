@@ -610,6 +610,8 @@ import SvgIcon from '../component/SvgIcon.vue';
       uni.onLocaleChange((e) => {
         this.applicationLocale = e.locale;
       })
+			uni.setLocale('es');
+			this.$i18n.locale = 'es';
     },
 		mounted() {
 			this.updateScreenWidth();

@@ -219,6 +219,10 @@ export default {
 			},
     };
   },
+	onLoad() {	
+		uni.setLocale('es');
+		this.$i18n.locale = 'es';
+  },
   methods: {
 	  change(e) {
 			console.log('change', e);
