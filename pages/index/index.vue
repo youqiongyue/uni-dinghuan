@@ -4,10 +4,10 @@
 		<!-- <view class="banner"></view> -->
 		<u-swiper
       :list="list1"
-      :height="computedHeight"
+      :height="defaultHeight"
 			circular
 			indicator
-			interval="120000"
+			interval="5000"
 			indicatorMode="line"
 			indicatorStyle="bottom: 80px"
     ></u-swiper>
@@ -487,8 +487,9 @@ import SvgIcon from '../component/SvgIcon.vue';
 				indicatorDots: true,
 				autoplay: false,
 				interval: 5000,
-				defaultHeight: 500,
+				defaultHeight: window.screenHeight > 800 ? 500 : 250,
 				smallScreenHeight: 250,
+				bigScreenHeight: 500,
 				duration: 1000,
 				screenWidth: 0,
 				currentIndex: 0,
@@ -595,7 +596,8 @@ import SvgIcon from '../component/SvgIcon.vue';
         return groups;
 			},
       computedHeight() {
-        return this.screenWidth < 800 ? this.smallScreenHeight : this.defaultHeight;
+				console.log(this.screenWidth)
+        return this.screenWidth > 800 ? this.bigScreenHeight : this.defaultHeight;
       },
     },
     onLoad() {
@@ -607,7 +609,7 @@ import SvgIcon from '../component/SvgIcon.vue';
         this.applicationLocale = e.locale;
       })
     },
-		beforeMount() {
+		created() {
 			this.updateScreenWidth();
 		},
 		mounted() {
@@ -620,6 +622,10 @@ import SvgIcon from '../component/SvgIcon.vue';
 			updateScreenWidth() {
 				const systemInfo = uni.getSystemInfoSync();
 				this.screenWidth = systemInfo.screenWidth;
+				console.log(this.screenWidth);
+			
+				this.defaultHeight = this.screenWidth > 800 ? this.bigScreenHeight : this.defaultHeight;
+				console.log(this.defaultHeight)
       },
 			toLeft() {
 				if (this.currentIndex > 0) {
@@ -680,6 +686,9 @@ import SvgIcon from '../component/SvgIcon.vue';
 	.uni-margin-wrap {
 		width: 690rpx;
 		width: 100%;
+
+	}
+	.u-swiper__wrapper {
 
 	}
 	.swiper-item_country {

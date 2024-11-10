@@ -3,6 +3,11 @@ import messages from './locale/index'
 
 console.log(11111)
 console.log(uni.getLocale())
+
+const systemInfo = uni.getSystemInfoSync();
+window.screenHeight = systemInfo.screenWidth;
+console.log(window.screenHeight);
+
 let i18nConfig = {
   locale: uni.getLocale(),
   messages
