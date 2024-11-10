@@ -24,7 +24,7 @@
 				<a class="fxg-nav_right_a" @click="changeLang('es')">{{$t('locale.es')}}</a>
 			</view>
 		</nav>
-		<nav class="fxg-nav-mini" @click="toggleNavbar">
+		<nav class="fxg-nav-mini">
 			<view class="fxg-nav-mini-container">
 				<view class="fxg-nav_left">
 				<view>
@@ -33,7 +33,14 @@
 						</span></a>
 					</view>
 				</view>
-				<view class="fxg-nav_right">
+				<view class="fxg-nav_lang">
+					<a class="fxg-nav_right_a" @click="changeLang('zh-Hans')">{{$t('locale.zh-hans')}}</a>
+					<span> | </span>
+					<a class="fxg-nav_right_a" @click="changeLang('en')">{{$t('locale.en')}} </a>
+					<span> | </span>
+					<a class="fxg-nav_right_a" @click="changeLang('es')">{{$t('locale.es')}}</a>
+				</view>
+				<view class="fxg-nav_right" @click="toggleNavbar">
 					<span></span>
 					<span></span>
 					<span></span>
@@ -80,6 +87,7 @@ export default {
 	methods: {
 		toggleNavbar(event) {
       event.stopPropagation(); // 阻止事件冒泡
+			console.log(this.isNavbarVisible)
       this.isNavbarVisible = !this.isNavbarVisible;
     },
     closeNavbar(event) {
@@ -253,6 +261,13 @@ export default {
 		.fxg-nav-mini {
 			display: block;
 			width: 100%;
+		}
+		.fxg-nav_left {
+			width: 20%;
+		}
+		.fxg-nav_lang {
+			line-height: 50px;
+			color: white;
 		}
 	}
 </style>	

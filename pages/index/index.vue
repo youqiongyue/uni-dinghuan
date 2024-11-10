@@ -39,11 +39,7 @@
 									type="primary" 
 									:text="$t('index.track_button')" 
 								  @click="handleClick"
-									customStyle="
-										width: 184px;
-										height: 50px;
-										background: linear-gradient( 270deg, #296CE1 0%, #5391FF 100%);
-									"
+									class="track_button"
 								></u-button>
 						</div>
 					</view>
@@ -611,8 +607,10 @@ import SvgIcon from '../component/SvgIcon.vue';
         this.applicationLocale = e.locale;
       })
     },
-		mounted() {
+		beforeMount() {
 			this.updateScreenWidth();
+		},
+		mounted() {
 			uni.onWindowResize(this.updateScreenWidth);
     },
     methods: {
@@ -821,6 +819,11 @@ import SvgIcon from '../component/SvgIcon.vue';
 	}
 	.express_container {
 		margin-top: 55px;
+	}
+	.track_button {
+		width: 184px;
+		height: 50px;
+		background: linear-gradient( 270deg, #296CE1 0%, #5391FF 100%);
 	}
   .title {
     font-size: 16px;
@@ -1218,6 +1221,9 @@ import SvgIcon from '../component/SvgIcon.vue';
 		}
 		.swiper_banner {
 			height: 250px;
+		}
+		.track_button { 
+			width: 84px;
 		}
 	}
 </style>
