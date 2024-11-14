@@ -1,9 +1,9 @@
 <template>
 	<view>
-		<Navigator />
 		<view class="search_track_container">
-		  <view class="form-container">
-			<view class="search_price_title"><span class="search_price_home" @click="goHome">{{$t('index.home_page')}}</span> / <span class="search_price_title_blue">{{$t('index.search_track')}}</span></view>
+		  <view class="form-container_track">
+			<view class="search_price_title"><span class="search_price_title_blue">{{$t('index.search_track')}}</span></view>
+	<!-- 		<view class="search_price_title_en"><span class="search_price_title_blue">Tracking</span></view> -->
 			<u--form
 					class="form-container-total"
 					labelPosition="left"
@@ -72,7 +72,6 @@
 			
 		</view>
 	  </view>
-		<Footer></Footer>
 	</view>
 </template>
 
@@ -108,10 +107,14 @@ export default {
 		}
 	},
 	mounted() {
+	    this.$i18n.locale = 'en';
 		const query = this.$route.query;
 		const trackId = query.track_id;
 		console.log(trackId)
-		if(!trackId) return;
+		if(!trackId) {
+      this.isLoading = false;
+      return;
+    };
 		this.model1.expressInfo.trackNumber = trackId;
     this.getTrackDetail(trackId);
 	  
@@ -198,11 +201,11 @@ export default {
 		searchTrack() {
 			const trackId = this.model1.expressInfo.trackNumber;
 			// 修改链接参数
-			const newUrl = new URL(window.location);
-			newUrl.searchParams.set('track_id', trackId); // 设置新的参数值
+			// const newUrl = new URL(window.location);
+			// newUrl.searchParams.set('track_id', trackId); // 设置新的参数值
 
-			// 使用 pushState 更新 URL
-			window.history.pushState({ path: newUrl.href }, '', newUrl.href);
+			// // 使用 pushState 更新 URL
+			// window.history.pushState({ path: newUrl.href }, '', newUrl.href);
 			this.getTrackDetail(trackId);
 		},
 		goHome() {
@@ -218,13 +221,14 @@ export default {
 @bg-color: #F5F5F5;
 @primary-color: #006FF0;
 
-.form-container {
+.form-container_track {
 /*  background: red;
 	background-color: rgb(242, 242, 242); */
 	width: 100%;
 	max-width: 992px;
 	margin: 0 auto;
 	font-size: 12px;
+  /* height: 100%; */
 }
 .form-container-total {
 	background: white;
@@ -278,15 +282,17 @@ export default {
 }
 .search_track_container {
 	background: #F5F5F5;
-	margin-top: 60px;
-	min-height: calc(100vh - 310px);
+	/* margin-top: 60px; */
+	/* min-height: calc(100vh - 310px); */
+    min-height: 100vh;
 }
 .search_price_title {
-	font-weight: 400;
-	font-size: 17px;
+	font-weight: 800;
+	font-size: 30px;
 	color: rgba(153, 153, 153, 0.88);
 	padding-top: 40px;
 	margin-bottom: 20px;
+  text-align: center;
 }
 .search_price_title_blue {
 	color: #006FF0;

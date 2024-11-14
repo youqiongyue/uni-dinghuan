@@ -21,6 +21,12 @@
 				"navigationBarTitleText": "",
 				"navigationStyle": "custom"
 			}
+		}, {
+			"path": "pages/index/track",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
 		},
 		{
 			"path": "pages/index/about_us",

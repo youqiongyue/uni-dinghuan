@@ -18,6 +18,7 @@ module.exports = {
             '/pages/index/search_price',
             '/pages/index/search_track',
             '/pages/index/about_us',
+            '/pages/index/track',
             '/pages/index_en/index',
             '/pages/index_en/search_price',
             '/pages/index_en/search_track',
