@@ -37,6 +37,36 @@
 			</view>
 			<view v-else-if="hasResult">
 				<view v-if="isSucc" class="route-result-container">
+					<view class="route-result-status">
+						<view class="route-result-status_item">
+							<view class="route-result-status_item_status">
+								<view class="route-result-status_detail search_icon___2pIme" v-if="trackInfo[0].track.status && trackInfo[0].track.status.includes('签收')">
+									<span role="img" aria-label="check-circle" class="anticon anticon-check-circle">
+										<svg viewBox="64 64 896 896" focusable="false" data-icon="check-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M699 353h-46.9c-10.2 0-19.9 4.9-25.9 13.3L469 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H325c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8a31.8 31.8 0 0051.7 0l210.6-292c3.9-5.3.1-12.7-6.4-12.7z"></path><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+										</svg>
+									</span>
+							  </view>
+								<view class="route-result-status_detail">
+									<view><span class="route-result-status_title">Billid：</span>{{ trackInfo[0].track.billid }}</view>
+									<view>
+										<span class="route-result-status_title">Status：</span>{{ trackInfo[0].track.status  || '在途中' }}
+										<!-- <u-icon name="checkmark-circle-fill" color="#00a500" size="20"></u-icon> -->
+									</view>
+								</view>
+					
+							</view>
+	
+						</view>
+						<view class="route-result-status_item">
+							<view><span class="route-result-status_title">Country：</span>{{ trackInfo[0].track.country }}</view>
+							<view><span class="route-result-status_title">CountryCode：</span>{{ trackInfo[0].track.countryCode }}</view>
+						</view>
+						<view class="route-result-status_item">
+							<view><span class="route-result-status_title">transBillid：</span>{{ trackInfo[0].track.transBillid }}</view>
+							<view><span class="route-result-status_title">DateTime：</span>{{ trackInfo[0].track.dateTime }}</view>
+						</view>
+	
+					</view>
 					<view class="route-result-container_second">
 						<view class="dashed-line"></view>
 						<view v-for="(routeItem, index) in trackInfo[0].items">
@@ -260,6 +290,26 @@ export default {
   font-size: 16px;
 	position: relative;
 }
+.route-result-status {
+	display: flex;
+	margin-bottom: 50px;
+}
+.route-result-status_item {
+	  display: flex;
+    flex-direction: column;
+    width: 33%;
+		font-size: 16px;
+		/* color: #006FF0; */
+
+}
+.route-result-status_item_status {
+	display: flex;
+}
+.route-result-status_title {
+	  /* color: #999999; */
+		/* color: black; */
+		font-weight: 800;
+}
 .route {
 	display: flex;
 	margin-bottom: 20px;
@@ -340,8 +390,35 @@ export default {
 	width: 30px;
 }
 
+.search_icon___2pIme {
+	  background-color: #006FF0;
+	  width: 50px;
+    height: 50px;
+    /* padding: 3px; */
+    color: #fff;
+    font-size: 34px;
+		margin-right: 8px;
+    /* padding-left: 2px; */
+}
+
+.u-icon--right {
+	display: inline-block;
+}
+
 .search_price_home {
 	cursor: pointer;
+}
+.anticon-check-circle {
+	display: inline-block;
+    color: inherit;
+    font-style: normal;
+    line-height: 0;
+    text-align: center;
+    text-transform: none;
+    vertical-align: -.125em;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+		margin-left: 7px;
 }
 
 @media only screen and (max-width:1000px) {  
@@ -365,6 +442,12 @@ export default {
 	}
 	.search-input {
 		width: 200px;
+	}
+    .route-result-status {
+		flex-direction: column;
+	}
+	.route-result-status_item {
+		width: 100%;
 	}
 }
 @media only screen and (max-width:430px) {  
