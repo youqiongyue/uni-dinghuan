@@ -137,7 +137,7 @@ export default {
 		}
 	},
 	mounted() {
-	    this.$i18n.locale = 'en';
+	  this.$i18n.locale = 'en';
 		const query = this.$route.query;
 		const trackId = query.track_id;
 		console.log(trackId)
@@ -315,7 +315,8 @@ export default {
 	margin-bottom: 20px;
 }
 .route-time {
-	width: 200px;
+	/* width: 200px; */
+	width: 50%;
 	margin-right: 60px;
 }
 .route-remark {
@@ -452,7 +453,7 @@ export default {
 }
 @media only screen and (max-width:430px) {  
 	.dashed-line { 
-		left: 123px;
+		left: 46%;
 	}
 	.route-time {
 		margin-right: 0;
